@@ -1,0 +1,15 @@
+<!--index.wxml-->
+
+<view class="container">
+
+	<view class='edit-header'>花名</view>
+    <form bindsubmit="requestSave" bindreset="formReset">
+        <view class='edit-input-container'>
+            <view class='edit-input-border'>
+                <input class='edit-input' type="text" placeholder="请输入花名" name='huaming' auto-focus value='{{huaming}}' />
+            </view>
+        </view>
+
+        <button class='edit-bt edit-submit' formType="submit" size="defaultSize" hover-class="defaultTap">保存</button>
+    </form>
+</view>

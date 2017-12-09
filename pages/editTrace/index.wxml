@@ -1,0 +1,32 @@
+<!--index.wxml-->
+
+<view class="container">
+	<view class='edit-header'>痕迹</view>
+
+    <form bindsubmit="requestSave" bindreset="formReset">
+        <view class='edit-input-container'>
+            <view class='my-func-group'>
+                <view class='my-func-item'>
+                    <view class='overflow-hidden'>
+                        <view class='my-func-item-label fleft'>行业</view>
+                        <view class='fright'>
+                            <view class='color999 iconfont icon-you fright'></view>
+                            <picker class='my-func-item-text ellipsis1'  bindchange="bindPickerChange" value="{{cagegoryIndex}}" range="{{cagegoryList}}">
+                                <view class="picker">{{cagegoryList[cagegoryIndex]}}</view>
+                            </picker>
+                        </view>
+                    </view>
+                    <view class='edit-input-border overflow-hidden'>
+                        <input class='edit-input' type="text" name='description' placeholder="请输入名称" />
+                    </view>
+                </view>
+            
+            </view>
+        </view>
+
+        <view class='edit-bt-container'>
+            <button class='edit-bt edit-delete' size="defaultSize" bindtap="bindEditDelete" hover-class="defaultTap">删除</button>
+            <button class='edit-bt edit-submit' formType="submit" size="defaultSize" hover-class="defaultTap">保存</button>
+        </view>
+    </form>
+</view>

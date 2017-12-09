@@ -1,0 +1,49 @@
+<!-- icoList/index.wxml -->
+
+<template name="officialCard">
+    <view class='official-item' bindtap="gotoOfficialInfoList" data-params='{{item}}'>
+        <view class='official-item-header' style='background-image: url({{item.officialPicUrl}})'>
+            <image class='official-layout' src="../../pic/img-bk.png" />
+            <text class='official-text1'>{{item.officialName}}</text>
+        </view>
+        <view class='official-item-body'>
+            <view class='official-item-area1'>
+                <view class='official-item-area1-1'>
+                    简介：{{item.officialDes}}
+                </view>
+                <view class='official-item-area1-2'>
+                    <button class='official-item-focus-default' type="default" size="mini" catchtap="handleOfficialFocus" hover-class="defaultTap" wx:if='{{item.isOfficialFocus}}' data-params='{{item}}' data-index='{{index}}' data-isfocus='{{false}}'>已关注</button>
+                    <button class='official-item-focus iconfont icon-jia' size="mini" catchtap="handleOfficialFocus" hover-class="defaultTap" data-params='{{item}}' data-index='{{index}}' data-isfocus='{{true}}' wx:else> 关注</button>
+                </view>
+            </view>
+            <view class='official-item-area2'>
+                <text class='official-item-area2-1'>{{item.officialFocus}} 关注 · {{item.officialFullSupport}} 赞同</text>
+            </view>
+        </view>
+    </view>
+</template>
+
+
+<template name="officialCard1">
+    <view class='official-item' bindtap="gotoOfficialDetail" data-params='{{item}}'>
+        <view class='official-item-header' style='background-image: url({{item.officialPicUrl}})'>
+            <image class='official-layout' src="../../pic/img-bk.png" />
+            <text class='official-text1'>{{item.officialName}}</text>
+        </view>
+        <view class='official-item-body'>
+            <view class='official-item-area1'>
+                <view class='official-item-area1-1'>
+                    简介：{{item.officialDes}}
+                </view>
+                <view class='official-item-area1-2'>
+                    <button class='official-item-focus-default' type="default" size="mini" catchtap="handleOfficialFocus" hover-class="defaultTap" wx:if='{{item.isOfficialFocus}}' data-params='{{item}}' data-isfocus='{{false}}'>已关注</button>
+                    <button class='official-item-focus iconfont icon-jia' size="mini" catchtap="handleOfficialFocus" hover-class="defaultTap" data-params='{{item}}' data-isfocus='{{true}}' wx:else> 关注</button>
+                </view>
+            </view>
+            <view class='official-item-area2'>
+                <text class='official-item-area2-1'>{{item.officialFocus || 0}} 关注 · {{item.officialFullSupport || 0}} 赞同</text>
+                <text class='official-item-area2-3 iconfont icon-you'></text>
+            </view>
+        </view>
+    </view>
+</template>

@@ -1,0 +1,160 @@
+@import '../../app.wxss';
+@import '../../style/loading.wxss';
+
+.bucard-list {
+    padding: 30rpx;
+    overflow: hidden;
+}
+
+/* .official-item {
+    position: relative;
+    background-color: #fff;
+    border-radius: 6rpx;
+    overflow: hidden;
+    margin-bottom: 20rpx;
+} */
+
+.official-item:nth-child(2n) {
+    margin-right: 0;
+}
+
+.official-layout {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.official-item-header {
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: center center;
+    height: 250rpx;
+    background-size:cover;
+}
+
+.official-text1 {
+    position: absolute;
+    bottom: 20rpx;
+    left: 20rpx;
+    color: #FFFFFF;
+    font-size: 48rpx;
+}
+
+.official-item-body {
+    padding: 20rpx;
+}
+
+.bucard-item {
+    position: relative;
+    background-color: #fff;
+    border-radius: 12rpx;
+    overflow: hidden;
+    padding: 30rpx 0;
+    box-shadow: 0 0 30rpx 0rpx rgba(0, 0, 0, 0.1);
+    margin-bottom: 30rpx;
+}
+
+.bucard-item:last-child {
+    margin: 0;
+}
+
+.official-item-msg {
+    position: relative;
+    background-color: #FAFAFA;
+    border-radius: 6rpx;
+    overflow: hidden;
+}
+
+.official-item-area1 {
+    overflow: hidden;
+    padding-bottom: 15rpx;
+}
+
+.official-item-area1-1 {
+    float: left;
+    width: 70%;
+    font-size: 38rpx;
+    color: #4A4A4A;
+}
+
+.official-item-area1-2 {
+    float: right;
+    width: 30%;
+    text-align: right;
+}
+
+.bucard-item-v2 {
+    overflow: hidden;
+    font-size: 24rpx;
+    padding-bottom: 15rpx;
+    padding: 0 40rpx;
+}
+
+.bucard-item-v2-1 {
+    float: left;
+    color: #999999;
+    margin-right: 34rpx;
+}
+
+.bucard-item-v2-2 {
+    float: right;
+    color: #FFAB40;
+}
+
+.bucard-item-v2-3 {
+    float: right;
+    font-size: 33rpx;
+    color: #999999;
+}
+
+.official-item-focus {
+    background-color: #3385ff;
+    color: #fff;
+}
+
+.official-item-focus::after {
+    border: 1rpx solid #2d78f4;
+}
+
+.official-item-focus-default {
+    color: #999999 !important;
+}
+
+
+
+.bucard-t1 {
+    padding-left: 40rpx;
+    border-left: 6rpx solid #3385FF;
+    font-size: 45rpx;
+    color: #4C4C4C;
+    margin-bottom: 24rpx;
+}
+
+.bucard-t2 {
+    padding-left: 40rpx;
+    font-size: 30rpx;
+    color: #6F6F6F;
+    margin-bottom: 30rpx;
+}
+
+.bucard-item-v1 {
+    overflow: hidden;
+}
+
+.bucard-item-v1-1 {
+    float: left;
+    width: 70%;
+}
+
+.bucard-item-v1-2 {
+    padding-right: 40rpx;
+    float: right;
+}
+
+.bucard-item-pic {
+    width: 120rpx;
+    height: 120rpx;
+    border-radius: 50%;
+}

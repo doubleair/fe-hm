@@ -1,0 +1,88 @@
+<!--index.wxml-->
+
+<view class="container">
+	<view class='myconf-info'>
+    <form bindsubmit="formSubmit">
+        <view class='myconf-info-header' style='background-image: url({{officialInfo.officialPicUrl}})'>
+            <image class='myconf-layout' src="../../pic/img-bk.png" />
+            <view class='myconf-text1'>
+                {{officialInfo.officialName}}
+            </view>
+        </view>
+        <view class='myconf-info-list'>
+            <view class='myconf-info-item'>
+                <view class='myconf-info-item-left iconfont icon-gongsi1'></view>
+                <view class='myconf-info-item-right'>
+                    <view class='myconf-info-item-right-group'>
+                        <view class='myconf-info-item-right-item'>
+                            <view class='myconf-info-item-right-item-name'>
+                                {{officialInfo.officialFullName}}
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+
+            <view class='myconf-info-item'>
+                <view class='myconf-info-item-left iconfont icon-youxiang'></view>
+                <view class='myconf-info-item-right'>
+                    <view class='myconf-info-item-right-group'>
+                        <view class='myconf-info-item-right-item'>
+                            <view class='myconf-info-item-right-item-name'>
+                                {{officialInfo.officialEmail}}
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+
+            <view class='myconf-info-item'>
+                <view class='myconf-info-item-left iconfont icon-dianhua'></view>
+                <view class='myconf-info-item-right'>
+                    <view class='myconf-info-item-right-group'>
+                        <view class='myconf-info-item-right-item'>
+                            <view class='myconf-info-item-right-item-name'>
+                                {{officialInfo.officialPhone}}
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+
+            <view class='myconf-info-item'>
+                <view class='myconf-info-item-left iconfont icon-jikediancanicon35'></view>
+                <view class='myconf-info-item-right'>
+                    <view class='myconf-info-item-right-group'>
+                        <view class='myconf-info-item-right-item'>
+                            <view class='myconf-info-item-right-item-name'>
+                                {{officialInfo.officialDes}}
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+
+            <view class='myconf-info-item'>
+                <view class='myconf-info-item-left iconfont icon-dizhi'></view>
+                <view class='myconf-info-item-right'>
+                    <view class='myconf-info-item-right-group'>
+                        <view class='myconf-info-item-right-item'>
+                            <view class='myconf-info-item-right-item-address' bindtap='handleMap'>
+                                <view class='myconf-info-item-right-item-address-text'>
+                                    {{officialInfo.officialAddress}} · {{officialInfo.officialDoorplate}}
+                                </view>
+                                <view class='my-map fright iconfont icon-dizhi'></view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        
+        <!--
+        <button class='submit-bt' form-type='submit' size="defaultSize" hover-class="defaultTap">保存</button>
+        -->
+    </form>
+	</view>
+
+</view>

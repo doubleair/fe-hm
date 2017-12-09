@@ -1,0 +1,28 @@
+<!--index.wxml-->
+
+<import src="../../tpl/circleCard.wxml"/>
+<import src="../../tpl/headInfo.wxml"/>
+
+<view class="container">
+	<view wx:if='{{circleList.length === 0}}'>
+		<view class='undefined-text'>
+			<text class='undefined-text-icon iconfont icon-kong1'></text>
+			暂无数据，稍后就来...
+		</view>
+	</view>
+
+	<view class='group-list'>
+        <template is="circleCard" wx:for='{{circleList}}' wx:key='{{item.circleId}}' data='{{item}}'></template>
+        
+        <!--
+		<template is="icoItem" data='{{icoList}}'></template>
+		<view class='down-last' wx:if='{{isFinish}}'>
+			没有更多了...
+		</view>
+		<view class='down-last' wx:if='{{isRequestGetIcoList}}'>
+			正在加载中...
+		</view>
+        -->
+	</view>
+
+</view>

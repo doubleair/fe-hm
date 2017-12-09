@@ -1,0 +1,37 @@
+<!--index.wxml-->
+
+<view class="container">
+	<view class='edit-header'>江湖</view>
+
+    <view class='edit-input-container'>
+        <view class='my-func-group'>
+
+            <view class='my-func-item'>
+                <view class='overflow-hidden'>
+                    <view class='my-func-item-label fleft'>行业</view>
+                    <view class='fright'>
+                        <view class='color999 iconfont icon-you fright'></view>
+                        <picker class='my-func-item-text ellipsis1' mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
+                            <view class="picker">
+                                {{multiArray[0][multiIndex[0]]}}/{{multiArray[1][multiIndex[1]]}}
+                            </view>
+                        </picker>
+
+                        <!--
+                        <picker class='my-func-item-text ellipsis1'  bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                            <view class="picker">{{array[index]}}</view>
+                        </picker>
+                        -->
+                    </view>
+                </view>
+                <view class='edit-input-border overflow-hidden'>
+                    <view class='edit-del-line iconfont icon-shanchu'></view>
+                    <input class='edit-input' type="text" placeholder="请输入名称" auto-focus />
+                </view>
+            </view>
+        
+        </view>
+    </view>
+
+    <button class='edit-submit' size="defaultSize" bindtap="defaultTap" hover-class="defaultTap">保存</button>
+</view>

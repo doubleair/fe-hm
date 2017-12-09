@@ -1,0 +1,62 @@
+<!--index.wxml-->
+
+<view class="container">
+	<view class='my'>
+        <view class='my-item-msg'>
+            <view class='my-item-header'>
+                <text class='my-nickname fleft'>头像</text>
+                <view class='my-userhead'>
+                    <image class='my-userhead-pic' src="http://img3.imgtn.bdimg.com/it/u=2770691011,100164542&fm=27&gp=0.jpg" />
+                    <view class='color999 iconfont icon-you fright'></view>
+                </view>
+                
+            </view>
+        </view>
+
+        <view class='my-func'>
+            <view class='my-func-group'>
+                <view class='my-func-item' bindtap="gotoEditNick">
+                    <view class='my-func-item-label fleft'>花名</view>
+                    <view class='fright'>
+                        <view class='color999 iconfont icon-you fright'></view>
+                        <view class='my-func-item-text ellipsis1 fright'>{{huaming}}</view>
+                    </view>
+                </view>
+                <view class='my-func-item' bindtap="gotoEditIntroduction">
+                    <view class='my-func-item-label fleft'>简说</view>
+                    <view class='fright'>
+                        <view class='color999 iconfont icon-you fright'></view>
+                        <view class='my-func-item-text ellipsis1 fright'>{{introduction}}</view>
+                    </view>
+                </view>
+                <view class='my-func-item' bindtap="gotoEditGame">
+                    <view class='my-func-item-label fleft'>江湖</view>
+                    <view class='fright'>
+                        <view class='color999 iconfont icon-you fright'></view>
+                        <view class='my-func-item-text ellipsis1 fright'>{{jianghuFE}}</view>
+                    </view>
+                </view>
+                <view class='my-func-item' bindtap="gotoEditTrace">
+                    <view class='my-func-item-label fleft'>痕迹</view>
+                    <view class='fright'>
+                        <view class='color999 iconfont icon-you fright'></view>
+                        <view class='my-func-item-text ellipsis1 fright'>{{traceFE}}</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+
+        <view class='my-func'>
+            <view class='my-func-group'>
+                <view class='my-func-item'>
+                    <view class='my-func-item-label fleft'>标签</view>
+                    <view class='fright'>
+                        <view class='color999 iconfont icon-you fright'></view>
+                        <view class='my-func-item-text ellipsis1 fright'># Dota狂魔 #、# 迟迟 #</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+
+	</view>
+</view>

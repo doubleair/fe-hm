@@ -1,0 +1,26 @@
+<!--index.wxml-->
+
+<view class="container">
+	<view class='my'>
+        <view class='my-item-msg'>
+            <view class='my-item-header'>
+                <text class='my-nickname fleft'>{{userInfo.nickName}}</text>
+                <view class='my-userhead'>
+                    <image class='my-userhead-pic' src='{{userInfo.avatarUrl}}' />
+                </view>
+            </view>
+        </view>
+
+        <view>
+            <view class='my-func'>
+                <view class='my-func-group'>
+                    <view class='my-func-item'>
+                        客服（吐槽、建议、提问）
+                        <view class='color999 iconfont icon-you fright'></view>
+                    </view>
+                </view>
+            </view>
+        </view>
+
+	</view>
+</view>

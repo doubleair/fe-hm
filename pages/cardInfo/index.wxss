@@ -1,0 +1,160 @@
+@import '../../app.wxss';
+
+.my-item {
+    position: relative;
+    background-color: #FAFAFA;
+    border-radius: 6rpx;
+    overflow: hidden;
+}
+
+.my-item:nth-child(2n) {
+    margin-right: 0;
+}
+
+.my-layout {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.my-item-header {
+    display: table;
+    height: 180rpx;
+    line-height: 180rpx;
+    background-size:cover;
+}
+
+.my-item-header.my-person {
+    text-align: center;
+}
+
+.my-text1 {
+    position: absolute;
+    bottom: 20rpx;
+    left: 20rpx;
+    color: #FFFFFF;
+    font-size: 48rpx;
+}
+
+.my-item-body {
+    padding: 20rpx;
+}
+
+.my-item {
+    position: relative;
+    background-color: #fff;
+    border-radius: 6rpx;
+    overflow: hidden;
+    margin-top: 20rpx;
+    padding: 20rpx;
+}
+
+.my-item-msg {
+    position: relative;
+    padding: 0 40rpx;
+    background-color: #fff;
+    border-radius: 6rpx;
+    overflow: hidden;
+    margin-bottom: 20rpx;
+}
+
+.my-item-area1 {
+    overflow: hidden;
+    padding-bottom: 15rpx;
+}
+
+.my-item-area1-1 {
+    float: left;
+    font-size: 38rpx;
+    color: #4A4A4A;
+}
+
+.my-item-area1-2 {
+    float: right;
+    width: 30%;
+    text-align: right;
+}
+
+.my-item-area2 {
+    overflow: hidden;
+    font-size: 32rpx;
+    padding-bottom: 15rpx;
+}
+
+.my-item-area2-1 {
+    float: left;
+    color: #999999;
+}
+
+.my-item-area2-2 {
+    float: right;
+    color: #FFAB40;
+}
+
+.my-item-area2-3 {
+    float: right;
+    font-size: 44rpx;
+    color: #999999;
+}
+
+.my-func-item {
+    color: #999999;
+    font-size: 30rpx;
+    padding-right: 20rpx;
+    border-bottom: 1rpx solid #E6E6E6;
+    background-color: #fff;
+    height: 120rpx;
+    line-height: 120rpx;
+    overflow: hidden;
+}
+
+.my-func-item:last-child {
+    border: none;
+}
+
+.my-userhead {
+    position:absolute;
+    right:20rpx;
+    display: inline-block;
+    vertical-align: middle;
+    width: 160rpx;
+}
+
+.my-userhead-pic {
+    border-radius: 50%;
+    width: 120rpx;
+    height: 120rpx;
+    vertical-align: middle;
+}
+
+.my-nickname {
+    display: table-cell;
+    vertical-align: middle;
+    width: 200rpx;
+    color: #999;
+    font-size: 30rpx;
+}
+
+.my-func {
+    padding-left: 40rpx;
+    background-color: #fff;
+    margin-bottom: 20rpx; 
+}
+
+.my-func-item-label {
+    height: 120rpx;
+    line-height: 128rpx;
+    font-size: 30rpx;
+}
+
+.my-func-item-text {
+    width: 320rpx;
+    height: 120rpx;
+    line-height: 128rpx;
+    padding-right: 20rpx;
+    text-align: right;
+    color: #6F6F6F;
+}

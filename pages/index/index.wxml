@@ -1,0 +1,73 @@
+
+<view class="container">
+	<view class='hm-detail-header'>
+        <view class='hm-detail-header-card'>
+            <view class='hm-detail-header-v1'>
+                <text class='hm-detail-header-t1'>小九九</text>
+                <image class='hm-detail-header-pic fright' src="http://img3.imgtn.bdimg.com/it/u=2770691011,100164542&fm=27&gp=0.jpg" />
+            </view>
+            <view class='hm-detail-header-v2'>
+                <view class='hm-detail-header-t2 ellipsis1'>不安分的情趣摄制狗、考三考研喵大三考研大喵考研大喵</view>
+            </view>
+            <view class='hm-detail-header-v3'>
+                <view class='hm-detail-header-v3-1'>
+                    <view class='hm-detail-header-t3 pink iconfont icon-gongsi1 ellipsis1'> 攻守道</view>
+                    <view class='hm-detail-header-t3 pink iconfont icon-gongsi1 ellipsis1'> 攻守道</view>
+                </view>
+                <view class='hm-detail-header-v3-2'>
+                    <view class='hm-detail-header-v3-card'>
+                        <view class='hm-detail-header-v3-fun-container'>
+                            <view class='hm-detail-header-v3-fun'>
+                                <view class='hm-detail-header-v3-fun-icon colorBlue iconfont icon-zan'></view>
+                                <view class='colorBlue'>12.1K</view>
+                            </view>
+                            <view class='hm-detail-header-v3-fun'>
+                                <view class='hm-detail-header-v3-fun-icon iconfont icon-fenxiang1'></view>
+                                <view class=''>12.1K</view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+
+    <view class='hm-detail-layout-1 m-bottom-20'>
+        <view class='hm-detail-layout-1-header'>
+            <view class='hm-detail-layout-1-line'></view>
+            <view class='hm-detail-layout-1-t1'>江湖</view>
+            <view class='hm-detail-layout-1-t2'>点击图标，查看Ta的信息吧...</view>
+            <view class='hm-detail-layout-1-fun'>查看更多<text class='iconfont icon-you'></text></view>
+        </view>
+
+        <view class='hm-detail-layout-1-body'>
+            <view class='hm-detail-layout-1-item'>
+                <image class='hm-detail-layout-1-pic' src="https://gss2.bdstatic.com/-fo3dSag_xI4khGkpoWK1HF6hhy/baike/w%3D268%3Bg%3D0/sign=fc01334b798b4710ce2ffacafbf5a4c0/1b4c510fd9f9d72a26f9db77df2a2834349bbb3f.jpg" />
+            </view>
+            <view class='hm-detail-layout-1-item'>
+                <image class='hm-detail-layout-1-pic' src="https://gss2.bdstatic.com/-fo3dSag_xI4khGkpoWK1HF6hhy/baike/w%3D268%3Bg%3D0/sign=fc01334b798b4710ce2ffacafbf5a4c0/1b4c510fd9f9d72a26f9db77df2a2834349bbb3f.jpg" />
+            </view>
+            <view class='hm-detail-layout-1-item'>
+                <image class='hm-detail-layout-1-pic' src="https://gss2.bdstatic.com/-fo3dSag_xI4khGkpoWK1HF6hhy/baike/w%3D268%3Bg%3D0/sign=fc01334b798b4710ce2ffacafbf5a4c0/1b4c510fd9f9d72a26f9db77df2a2834349bbb3f.jpg" />
+            </view>
+            <view class='hm-detail-layout-1-item'>
+                <image class='hm-detail-layout-1-pic' src="https://gss2.bdstatic.com/-fo3dSag_xI4khGkpoWK1HF6hhy/baike/w%3D268%3Bg%3D0/sign=fc01334b798b4710ce2ffacafbf5a4c0/1b4c510fd9f9d72a26f9db77df2a2834349bbb3f.jpg" />
+            </view>
+        </view>
+    </view>
+
+    <view class='hm-detail-layout-1'>
+        <view class='hm-detail-layout-1-header'>
+            <view class='hm-detail-layout-1-line'></view>
+            <view class='hm-detail-layout-1-t1'>标签</view>
+            <view class='hm-detail-layout-1-t2'>点击图标，查看Ta的信息吧...</view>
+            <view class='hm-detail-layout-1-fun'>添加标签<text class='iconfont icon-you'></text></view>
+        </view>
+
+        <view class='hm-detail-layout-2-body'>
+            <text class='hm-detail-layout-2-body-item'># 达大厦 #<text class='hm-detail-layout-2-body-item-count'>23</text></text>
+        </view>
+    </view>
+
+    <view class='global-layer iconfont icon-bianji' bindtap="gotoEdit"></view>
+</view>

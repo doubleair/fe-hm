@@ -1,0 +1,68 @@
+<!--index.wxml-->
+
+<import src="../../tpl/officialCard.wxml"/>
+<import src="../../tpl/officialInfoCard.wxml"/>
+
+<view class="container">
+
+	<view class='bucard-list'>
+
+		<view class='bucard-item' bindtap="gotoOfficialInfoDetail" data-params='{{item}}'>
+			<view class='bucard-item-v1'>
+				<view class='bucard-item-v1-1'>
+					<view class='bucard-t1 m-bottom-10'>小九九</view>
+					<view class='bucard-t2 ellipsis1 m-bottom-15'>不安分的情趣摄制狗、考三考研喵大三考研大喵考研大喵</view>
+				</view>
+				<view class='bucard-item-v1-2'>
+                	<image class='bucard-item-pic' src="http://img3.imgtn.bdimg.com/it/u=2770691011,100164542&fm=27&gp=0.jpg" />
+				</view>
+			</view>
+			<view class='bucard-item-v2'>
+				<text class='bucard-item-v2-1'># Dota狂魔 #</text>
+				<text class='bucard-item-v2-1'># Dota狂魔 #</text>
+			</view>
+		</view>
+
+		<view class='bucard-item' bindtap="gotoOfficialInfoDetail" data-params='{{item}}'>
+			<view class='bucard-item-v1'>
+				<view class='bucard-item-v1-1'>
+					<view class='bucard-t1 m-bottom-10'>小九九</view>
+					<view class='bucard-t2 ellipsis1 m-bottom-15'>不安分的情趣摄制狗、考三考研喵大三考研大喵考研大喵</view>
+				</view>
+				<view class='bucard-item-v1-2'>
+                	<image class='bucard-item-pic' src="http://img3.imgtn.bdimg.com/it/u=2770691011,100164542&fm=27&gp=0.jpg" />
+				</view>
+			</view>
+			<view class='bucard-item-v2'>
+				<text class='bucard-item-v2-1'># Dota狂魔 #</text>
+				<text class='bucard-item-v2-1'># Dota狂魔 #</text>
+			</view>
+		</view>
+
+		<view class='bucard-item' bindtap="gotoOfficialInfoDetail" data-params='{{item}}'>
+			<view class='bucard-item-v1'>
+				<view class='bucard-item-v1-1'>
+					<view class='bucard-t1 m-bottom-10'>小九九</view>
+					<view class='bucard-t2 ellipsis1 m-bottom-15'>不安分的情趣摄制狗、考三考研喵大三考研大喵考研大喵</view>
+				</view>
+				<view class='bucard-item-v1-2'>
+                	<image class='bucard-item-pic' src="http://img3.imgtn.bdimg.com/it/u=2770691011,100164542&fm=27&gp=0.jpg" />
+				</view>
+			</view>
+			<view class='bucard-item-v2'>
+				<text class='bucard-item-v2-1'># Dota狂魔 #</text>
+				<text class='bucard-item-v2-1'># Dota狂魔 #</text>
+			</view>
+		</view>
+
+		<!--
+		<view class='down-last' wx:if='{{isFinish}}'>
+			没有更多了...
+		</view>
+		<view class='down-last' wx:if='{{isRequest}}'>
+			正在加载中...
+		</view>
+		-->
+	</view>
+
+</view> 

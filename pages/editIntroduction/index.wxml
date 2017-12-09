@@ -1,0 +1,13 @@
+<!--index.wxml-->
+
+<view class="container">
+	<view class='edit-header'>简说</view>
+    <view class='edit-input-container'>
+        <view class='edit-input-border'>
+            <textarea class='edit-textarea' bindinput="bindTextAreaInput" auto-height placeholder="请输入简说" auto-focus value='{{introduction}}'></textarea>
+        </view>
+        <view class='edit-tips'>在简版情况下，超出0/20个字的部分会被省略</view>
+    </view>
+
+    <button class='edit-submit' size="defaultSize" bindtap="requestSave" hover-class="defaultTap">保存</button>
+</view>
