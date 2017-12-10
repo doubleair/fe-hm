@@ -3,27 +3,26 @@
 	<view class='hm-detail-header'>
         <view class='hm-detail-header-card'>
             <view class='hm-detail-header-v1'>
-                <text class='hm-detail-header-t1'>小九九</text>
+                <text class='hm-detail-header-t1'>{{huaming || '暂无花名'}}</text>
                 <image class='hm-detail-header-pic fright' src="http://img3.imgtn.bdimg.com/it/u=2770691011,100164542&fm=27&gp=0.jpg" />
             </view>
             <view class='hm-detail-header-v2'>
-                <view class='hm-detail-header-t2 ellipsis1'>不安分的情趣摄制狗、考三考研喵大三考研大喵考研大喵</view>
+                <view class='hm-detail-header-t2 ellipsis1'>{{introduction || '匆匆过客，暂无信息'}}</view>
             </view>
             <view class='hm-detail-header-v3'>
                 <view class='hm-detail-header-v3-1'>
-                    <view class='hm-detail-header-t3 pink iconfont icon-gongsi1 ellipsis1'> 攻守道</view>
-                    <view class='hm-detail-header-t3 pink iconfont icon-gongsi1 ellipsis1'> 攻守道</view>
+                    <View class='hm-detail-header-t3-t1 pink iconfont icon-gongsi1 ellipsis1' wx:for='{{traceList}}' wx:key='{{item.id}}'> {{item.description}}</View>
                 </view>
                 <view class='hm-detail-header-v3-2'>
                     <view class='hm-detail-header-v3-card'>
                         <view class='hm-detail-header-v3-fun-container'>
-                            <view class='hm-detail-header-v3-fun'>
-                                <view class='hm-detail-header-v3-fun-icon colorBlue iconfont icon-zan'></view>
-                                <view class='colorBlue'>12.1K</view>
+                            <view class='hm-detail-header-v3-fun' bindtap='requestLike'>
+                                <view class="hm-detail-header-v3-fun-icon {{liked ? 'colorBlue' : ''}} iconfont icon-zan"></view>
+                                <view class="{{liked ? 'colorBlue' : ''}}">{{likedNum}}</view>
                             </view>
                             <view class='hm-detail-header-v3-fun'>
-                                <view class='hm-detail-header-v3-fun-icon iconfont icon-fenxiang1'></view>
-                                <view class=''>12.1K</view>
+                                <view class='hm-detail-header-v3-fun-icon iconfont icon-shoucang'></view>
+                                <view class=''>{{sharedNum}}</view>
                             </view>
                         </view>
                     </view>
@@ -69,5 +68,8 @@
         </view>
     </view>
 
-    <view class='global-layer iconfont icon-bianji' bindtap="gotoEdit"></view>
+    <view class='global-layer-share iconfont icon-fenxiang1' bindtap="shareHM"></view>
+
+    <button class='global-layer-share iconfont icon-fenxiang1' open-type="share"></button>
+    <view class='global-layer iconfont icon-bianji' bindtap="gotoCardInfo"></view>
 </view>

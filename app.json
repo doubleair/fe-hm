@@ -1,7 +1,6 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/circleList/index",
     "pages/officialList/index",
     "pages/officialDetail/index",
     "pages/officialInfoList/index",

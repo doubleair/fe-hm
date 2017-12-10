@@ -13,9 +13,9 @@ Page({
 		officialInfo: {},
 		huaming: '',
 		description: '',
-		jianghu: [],
+		jianghuList: [],
 		jianghuFE: [],
-		trace: [],
+		traceList: [],
 		traceFE: []
 	},
 	gotoEditNick: function() {
@@ -28,14 +28,14 @@ Page({
             url: `../editIntroduction/index`
         })
 	},
-	gotoEditGame: function() {
+	gotoEditGameList: function() {
 		wx.navigateTo({
-            url: `../editGame/index`
+            url: `../editGameList/index`
         })
 	},
-	gotoEditTrace: function() {
+	gotoEditTraceList: function() {
 		wx.navigateTo({
-            url: `../editTrace/index`
+            url: `../editTraceList/index`
         })
 	},
 	requestRule: function(options = {}) {
@@ -51,15 +51,13 @@ Page({
 			success: (res) => {
 				if(res.success) {
 
-					let jianghuFE = res.data.jianghu && res.data.jianghu.map((data) => {
+					let jianghuFE = res.data.jianghuList && res.data.jianghuList.map((data) => {
 						return data.jianghuSite
 					})
 
-					let traceFE = res.data.trace && res.data.trace.map((data) => {
-						// console.log('dadsa', data);
+					let traceFE = res.data.traceList && res.data.traceList.map((data) => {
 						return data.description
 					})
-					// console.log('dasds', jianghuFE, traceFE);
 					this.setData({
 						...res.data,
 						traceFE: traceFE.join('、'),

@@ -1,14 +1,13 @@
 // exports.host = 'http://127.0.0.1:7001'
 
 const apiMap = {
-    // https://14henry.top/huaming/user/login.json?code=123,
-    login: 'huaming/user/login.json',
-    infoUpdate: 'huaming/huamingInfo/update.json',
-    // getInfo: 'huaming/huamingInfo/getInfo.jsonp',
+    login: 'huaming/user/login',
+    infoUpdate: 'huaming/huamingInfo/update',
     getTraceCategory: 'huaming/huamingInfo/getTraceCategory',
     getJianghuCategory: 'huaming/huamingInfo/getJianghuCategory',
     getHuamingAndJianghuAndTrace: 'huaming/huamingInfo/getHuamingAndJianghuAndTrace',
     getHuamingInfo: 'huaming/huamingInfo/getHuamingInfo',
+    like: 'huaming/activity/like'
     
     // userValid: '/rest/official/user/valid',
     // infoCreate: '/rest/official/info/create',

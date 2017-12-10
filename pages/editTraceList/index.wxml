@@ -5,17 +5,17 @@
 
     <view class='edit-input-container'>
         <view class='my-func-group'>
-            <view class='my-func-item' bindtap='gotoMark' wx:for='{{markList}}'>
+            <view class='my-func-item' bindtap='gotoEditTrace' wx:for='{{traceList}}' data-traceid='{{item.id}}' wx:key='{{item.id}}'>
                 <view class='overflow-hidden'>
-                    <view class='my-func-item-label fleft'>{{item.category}}</view>
+                    <view class='my-func-item-label fleft'>{{item.traceName}}</view>
                     <view class='width80p fright'>
                         <view class='color999 iconfont icon-you fright margin-top-1-3'></view>
-                        <view class="picker text-right">{{item.cnName}}</view>
+                        <view class="picker text-right">{{item.description}}</view>
                     </view>
                 </view>
             </view>
         </view>
     </view>
 
-    <button class='edit-submit' size="defaultSize" bindtap="gotoEdit" hover-class="defaultTap">添加</button>
+    <button class='edit-submit' size="defaultSize" bindtap="gotoEdit" hover-class="defaultTap" wx:if='{{traceList.length < 1}}'>添加</button>
 </view>

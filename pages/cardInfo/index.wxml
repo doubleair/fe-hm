@@ -29,14 +29,14 @@
                         <view class='my-func-item-text ellipsis1 fright'>{{introduction}}</view>
                     </view>
                 </view>
-                <view class='my-func-item' bindtap="gotoEditGame">
+                <view class='my-func-item' bindtap="gotoEditGameList">
                     <view class='my-func-item-label fleft'>江湖</view>
                     <view class='fright'>
                         <view class='color999 iconfont icon-you fright'></view>
                         <view class='my-func-item-text ellipsis1 fright'>{{jianghuFE}}</view>
                     </view>
                 </view>
-                <view class='my-func-item' bindtap="gotoEditTrace">
+                <view class='my-func-item' bindtap="gotoEditTraceList">
                     <view class='my-func-item-label fleft'>痕迹</view>
                     <view class='fright'>
                         <view class='color999 iconfont icon-you fright'></view>

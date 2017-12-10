@@ -21,7 +21,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 18,
+			"current": 22,
 			"list": [
 				{
 					"id": 4,
@@ -135,7 +135,7 @@
 					"id": 18,
 					"name": "编辑痕迹-",
 					"pathName": "pages/editTrace/index",
-					"query": ""
+					"query": "traceId=3"
 				},
 				{
 					"id": -1,
@@ -153,6 +153,12 @@
 					"id": -1,
 					"name": "首页",
 					"pathName": "pages/index/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "江湖列表",
+					"pathName": "pages/editGameList/index",
 					"query": ""
 				}
 			]

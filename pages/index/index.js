@@ -29,98 +29,77 @@ Page({
 			}
 		}
 	},
-	gotoMyOfficialDetail: function() {
+	gotoCardInfo: function() {
 		wx.navigateTo({
-            url: `../myOfficialDetail/index?officialId=${this.data.userInfo.officialId}`
+            url: `../cardInfo/index`
         })
 	},
-	gotoMyOfficialApply: function() {
-		wx.navigateTo({
-            url: `../myOfficialApply/index`
-        })
-	},
-    gotoSend: function(e) {
-        wx.navigateTo({
-            url: `../send/index`
-        })
-	},
-	gotoEdit: function(e) {
-		wx.navigateTo({
-            url: `../edit/index`
-        })
-	},
-	gotoMyOfficialInfoList: function(e) {
-		const { officialId } = this.data.userInfo
-		wx.navigateTo({
-            url: `../myOfficialInfoList/index?officialId=${officialId}`
-        })
-	},
-	gotoMyDynamic: function(e) {
-		wx.navigateTo({
-            url: `../myDynamic/index`
-        })
-	},
-	requestRule: function(options = {}) {
-		wx.showLoading({
-			title: '加载中...',
-			mask: true
-		})
-		getEnhanceUserInfo((wxSessionCode, userInfo) => {
-			request({
-				key: 'login',
-				data: {
-					...userInfo,
-				},
-				isLogin: true,
-				success: (res) => {
-					console.log('ddss', res);
-					if(res.code === 200) {
-						this.setData({
-							userInfo: {
-								...userInfo,
-								...res.data.userInfo
-							}
-						})
-						if(res.data.userInfo.officialId) {
-							request({
-								key: 'officialGetOfficialDetail',
-								isLogin: true,
-								data: {
-									officialId: res.data.userInfo.officialId
-								},
-								success: (res) => {
-									if(res.code === 200) {
-										setTimeout(() => {
-											isRequest = false
-											this.setData({
-												officialInfo: res.data.officialInfo,
-											})
-											lockRequest = false
-										})
-									} else {
-										wx.showToast({
-											title: '加载失败',
-											icon: 'fial',
-											duration: 1200
-										})
-									}
-								}
-							})
-						}
-					}
-				},
-				fial: () => {
-				}
+	requestLike: function() {
+		if(this.data.liked) {
+			this.setData({
+				liked: !this.data.liked,
+				likedNum: this.data.liked - 1
 			})
-			wx.hideLoading()
-		}, (res) => {
-			wx.hideLoading()
+		} else {
+			this.setData({
+				liked: !this.data.liked,
+				likedNum: this.data.liked + 1
+			})
+		}
+		request({
+			key: 'like',
+			data: {
+				huamingId: this.data.huamingId
+			},
+			isLogin: true,
+			success: (res) => {
+				if(res.success) {
+					if(this.data.liked) {
+						this.setData({
+							liked: res.data.liked,
+							likedNum: res.data.likedNum
+						})
+					} else {
+						this.setData({
+							liked: res.data.liked,
+							likedNum: res.data.likedNum
+						})
+					}
+				}
+			},
+			fial: (res) => {
+				wx.showToast({
+					title: `请求服务失败`,
+					mask: true
+				})
+			}
+		})
+	},
+	requestCardInfo: function() {
+		request({
+			key: 'getHuamingAndJianghuAndTrace',
+			isLogin: true,
+			success: (res) => {
+				if(res.success) {
+					let traceList = res.data.traceList && res.data.traceList.length > 2 ? res.data.traceList.slice(0, 2) : res.data.traceList
+					this.setData({
+						...res.data,
+						traceList
+					})
+				}
+			},
+			fial: (res) => {
+				wx.showToast({
+					title: `请求服务失败`,
+					mask: true
+				})
+			}
 		})
 	},
 	onLoad: function (res) {
 		this.setData({
-			urlParams: res
+			searchMap: res
 		})
-		this.requestRule()
+		this.requestCardInfo()
 	}
 })

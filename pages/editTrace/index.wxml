@@ -11,13 +11,13 @@
                         <view class='my-func-item-label fleft'>行业</view>
                         <view class='fright'>
                             <view class='color999 iconfont icon-you fright'></view>
-                            <picker class='my-func-item-text ellipsis1'  bindchange="bindPickerChange" value="{{cagegoryIndex}}" range="{{cagegoryList}}">
-                                <view class="picker">{{cagegoryList[cagegoryIndex]}}</view>
+                            <picker class='my-func-item-text ellipsis1'  bindchange="bindPickerChange" value="{{cagegoryIndex}}" range="{{cagegoryNameList}}">
+                                <view class="picker">{{cagegoryNameList[cagegoryIndex]}}</view>
                             </picker>
                         </view>
                     </view>
                     <view class='edit-input-border overflow-hidden'>
-                        <input class='edit-input' type="text" name='description' placeholder="请输入名称" />
+                        <input class='edit-input' type="text" name='description' placeholder="请输入名称" value='{{description}}' />
                     </view>
                 </view>
             

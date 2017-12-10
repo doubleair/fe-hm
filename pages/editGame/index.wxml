@@ -20,7 +20,7 @@
                     </view>
                     <view class='edit-input-border overflow-hidden'>
                         <view class='edit-del-line iconfont icon-shanchu'></view>
-                        <input class='edit-input' type="text" placeholder="请输入名称" name='jianghuSite' />
+                        <input class='edit-input' type="text" placeholder="请输入名称" name='jianghuSite' value='{{jianghuSite}}' />
                     </view>
                 </view>
             </view>

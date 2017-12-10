@@ -38,7 +38,7 @@ Page({
 		}
 		this.setData(data);
 	},
-	requestRule: function(options = {}) {
+	requestCategory: function(options = {}) {
 		request({
 			key: 'getJianghuCategory',
 			success: (res) => {
@@ -59,6 +59,7 @@ Page({
 						nextMultiArray,
 						sourceMultiArray
 					})
+					this.requestCardInfo()
 				}
 				wx.hideLoading()
 			},
@@ -66,7 +67,58 @@ Page({
 				wx.hideLoading()
 			}
 		})
+	},
+	requestCardInfo: function() {
+		request({
+			key: 'getHuamingAndJianghuAndTrace',
+			isLogin: true,
+			success: (res) => {
+				if(res.success) {
+					let jianghuList = res.data.jianghuList
+					let currentGameInfo = {}
+					// 查询目标江湖信息
+					console.log('jianghuList', jianghuList);
+					jianghuList.forEach((data) => {
+						if(Number(this.data.searchMap.gameId) === data.id) {
+							currentGameInfo = data
+						}
+					})
+					console.log('currentGameInfo', currentGameInfo);
+					let topIndex = 0
+					let nextIndex = 0
+					let isFind = false
+					const sourceMultiArray = this.data.sourceMultiArray
+					// 查询行业下标一级
+					for(let i = 0, l = sourceMultiArray.length; i < l; i++) {
+						const topCatetory = sourceMultiArray[i]
+						topIndex = i
+						// 查询行业下标二级
+						for(let n = 0, m = topCatetory.nextLevelList.length; n < m; n++) {
+							const nextCatetory = topCatetory.nextLevelList[n]
+							nextIndex = n
+							if(nextCatetory.id === currentGameInfo.jianghuConstantId) {
+								isFind = true
+								break
+							}
+						}
+						if(isFind) {
+							break
+						}
+					}
 
+					this.setData({
+						multiIndex: [topIndex, nextIndex],
+						jianghuSite: currentGameInfo.jianghuSite
+					})
+				}
+			},
+			fial: (res) => {
+				wx.showToast({
+					title: `请求服务失败`,
+					mask: true
+				})
+			}
+		})
 	},
 	requestSave: function(e) {
 		const nextLevelList = this.data.sourceMultiArray[this.data.multiIndex[0]].nextLevelList[this.data.multiIndex[1]]
@@ -87,7 +139,12 @@ Page({
 				value: JSON.stringify(params)
 			},
 			success: (res) => {
-				console.log('ddss', res);
+				if(res.success) {
+					wx.showToast({
+						title: '保存成功！',
+						mask: true
+					})
+				}
 			}
 		})
 	},
@@ -95,6 +152,6 @@ Page({
 		this.setData({
 			searchMap: res
 		})
-		this.requestRule()
+		this.requestCategory()
 	}
 })

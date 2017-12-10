@@ -12,7 +12,6 @@ Page({
 		huaming: ''
 	},
 	requestSave: function(e) {
-
 		request({
 			key: 'infoUpdate',
 			isLogin: true,
@@ -22,7 +21,12 @@ Page({
 				value: e.detail.value.huaming
 			},
 			success: (res) => {
-				console.log('ddss', res);
+				if(res.success) {
+					wx.showToast({
+						title: '保存成功！',
+						mask: true
+					})
+				}
 			}
 		})
 	},

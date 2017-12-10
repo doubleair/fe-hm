@@ -47,7 +47,12 @@ Page({
 				value: this.data.introduction
 			},
 			success: (res) => {
-				console.log('ddss', res);
+				if(res.success) {
+					wx.showToast({
+						title: '保存成功！',
+						mask: true
+					})
+				}
 			}
 		})
 	},

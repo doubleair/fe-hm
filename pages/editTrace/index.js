@@ -10,8 +10,9 @@ let lockRequest = false
 Page({
 	data: {
 		sourceCagegoryList: [],
-		cagegoryList: [],
-		cagegoryIndex: 0
+		cagegoryNameList: [],
+		cagegoryIndex: 0,
+		cardInfo: {}
 	},
 	bindMultiPickerChange: function (e) {
 		console.log('picker发送选择改变，携带值为', e.detail.value)
@@ -57,20 +58,61 @@ Page({
 			success: (res) => {
 				if(res.success) {
 					const sourceCagegoryList = res.data
-					let cagegoryList = sourceCagegoryList && sourceCagegoryList.map((item) => {
+					let cagegoryNameList = sourceCagegoryList && sourceCagegoryList.map((item) => {
 						return item.traceName
 					})
 
 					this.setData({
-						cagegoryList,
+						cagegoryNameList,
 						sourceCagegoryList,
 					})
+					this.requestCardInfo()
 				}
+				
 				wx.hideLoading()
 			},
 			fial: () => {
 				console.log('dasdasdas');
 				wx.hideLoading()
+			}
+		})
+	},
+	requestCardInfo: function() {
+		request({
+			key: 'getHuamingAndJianghuAndTrace',
+			isLogin: true,
+			success: (res) => {
+				if(res.success) {
+					let traceList = res.data.traceList
+					let currentTraceInfo = {}
+					// 查询目标痕迹信息
+					console.log('traceList', traceList);
+					traceList.forEach((data) => {
+						if(Number(this.data.searchMap.traceId) === data.id) {
+							currentTraceInfo = data
+						}
+					})
+
+					// 查询行业下标
+					this.data.sourceCagegoryList.forEach((data, index) => {
+						if(data.id === currentTraceInfo.traceConstantId) {
+							console.log('dasdsa', index);
+							const cagegoryIndex = index
+							const description = currentTraceInfo.description
+							console.log('description', description);
+							this.setData({
+								cagegoryIndex,
+								description
+							})
+						}
+					})
+				}
+			},
+			fial: (res) => {
+				wx.showToast({
+					title: `请求服务失败`,
+					mask: true
+				})
 			}
 		})
 	},
@@ -91,7 +133,12 @@ Page({
 				value: JSON.stringify(params)
 			},
 			success: (res) => {
-				console.log('ddss', res);
+				if(res.success) {
+					wx.showToast({
+						title: '保存成功！',
+						mask: true
+					})
+				}
 			}
 		})
 	},
@@ -100,19 +147,5 @@ Page({
 			searchMap: res
 		})
 		this.requestCagegory()
-		// this.requestRule()
-
-		// request({
-		// 	key: 'getInfo',
-		// 	data: {
-		// 		// huaming/introduction
-		// 		type: 'mark',
-		// 		value: this.data.textArea
-		// 	},
-		// 	success: (res) => {
-		// 		console.log('ddss', res);
-		// 	}
-		// })
-
 	}
 })
