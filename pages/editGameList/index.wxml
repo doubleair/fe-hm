@@ -10,7 +10,7 @@
                     <view class='my-func-item-label fleft'>行业</view>
                     <view class='width80p fright'>
                         <view class='color999 iconfont icon-you fright margin-top-1-3'></view>
-                        <view class="picker text-right">{{item.jianghuName}}</view>
+                        <view class="picker text-right">{{item.jianghuConstantParentName}}/{{item.jianghuName}}</view>
                     </view>
                 </view>
             </view>

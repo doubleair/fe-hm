@@ -40,17 +40,10 @@
         </view>
 
         <view class='hm-detail-layout-1-body'>
-            <view class='hm-detail-layout-1-item'>
-                <image class='hm-detail-layout-1-pic' src="https://gss2.bdstatic.com/-fo3dSag_xI4khGkpoWK1HF6hhy/baike/w%3D268%3Bg%3D0/sign=fc01334b798b4710ce2ffacafbf5a4c0/1b4c510fd9f9d72a26f9db77df2a2834349bbb3f.jpg" />
-            </view>
-            <view class='hm-detail-layout-1-item'>
-                <image class='hm-detail-layout-1-pic' src="https://gss2.bdstatic.com/-fo3dSag_xI4khGkpoWK1HF6hhy/baike/w%3D268%3Bg%3D0/sign=fc01334b798b4710ce2ffacafbf5a4c0/1b4c510fd9f9d72a26f9db77df2a2834349bbb3f.jpg" />
-            </view>
-            <view class='hm-detail-layout-1-item'>
-                <image class='hm-detail-layout-1-pic' src="https://gss2.bdstatic.com/-fo3dSag_xI4khGkpoWK1HF6hhy/baike/w%3D268%3Bg%3D0/sign=fc01334b798b4710ce2ffacafbf5a4c0/1b4c510fd9f9d72a26f9db77df2a2834349bbb3f.jpg" />
-            </view>
-            <view class='hm-detail-layout-1-item'>
-                <image class='hm-detail-layout-1-pic' src="https://gss2.bdstatic.com/-fo3dSag_xI4khGkpoWK1HF6hhy/baike/w%3D268%3Bg%3D0/sign=fc01334b798b4710ce2ffacafbf5a4c0/1b4c510fd9f9d72a26f9db77df2a2834349bbb3f.jpg" />
+            <view class='hm-detail-layout-1-item' wx:for='{{jianghuList}}' wx:key='{{item.id}}'>
+                <web-view src="https://mp.weixin.qq.com/">
+                    <image class='hm-detail-layout-1-pic' src="https://gss2.bdstatic.com/-fo3dSag_xI4khGkpoWK1HF6hhy/baike/w%3D268%3Bg%3D0/sign=fc01334b798b4710ce2ffacafbf5a4c0/1b4c510fd9f9d72a26f9db77df2a2834349bbb3f.jpg" />
+                </web-view>
             </view>
         </view>
     </view>

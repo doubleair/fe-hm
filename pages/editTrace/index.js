@@ -119,7 +119,7 @@ Page({
 	requestSave: function(e) {
 		const params = {
 			traceConstantId: this.data.sourceCagegoryList[this.data.cagegoryIndex].id,
-			traceName: this.data.sourceCagegoryList[this.data.cagegoryIndex].traceName,
+			// traceName: this.data.sourceCagegoryList[this.data.cagegoryIndex].traceName,
 			description: e.detail.value.description
 		}
 		if(this.data.searchMap.traceId) {

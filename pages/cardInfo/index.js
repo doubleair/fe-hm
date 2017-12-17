@@ -51,13 +51,13 @@ Page({
 			success: (res) => {
 				if(res.success) {
 
-					let jianghuFE = res.data.jianghuList && res.data.jianghuList.map((data) => {
-						return data.jianghuSite
-					})
+					let jianghuFE = res.data.jianghuList ? res.data.jianghuList.map((data) => {
+						return data.jianghuName
+					}) : []
 
-					let traceFE = res.data.traceList && res.data.traceList.map((data) => {
+					let traceFE = res.data.traceList ? res.data.traceList.map((data) => {
 						return data.description
-					})
+					}) : []
 					this.setData({
 						...res.data,
 						traceFE: traceFE.join('、'),

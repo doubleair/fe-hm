@@ -18,31 +18,38 @@ Page({
 		const jianghuConstantId = sourceMultiArray[e.detail.value[0]].nextLevelList[e.detail.value[1]].id
 
 		this.setData({
-		  multiIndex: e.detail.value,
-		  jianghuConstantId
+			multiIndex: e.detail.value,
+			jianghuConstantId
 		})
 	},
 	bindMultiPickerColumnChange: function (e) {
-		var data = {
-		  multiArray: this.data.multiArray,
-		  multiIndex: this.data.multiIndex
+		this.handleChangePicker({
+			column: e.detail.column,
+			value: e.detail.value
+		})
+	},
+	handleChangePicker: function (options) {
+		const { column, value } = options
+		const data = {
+			multiArray: this.data.multiArray,
+			multiIndex: this.data.multiIndex
 		};
-		console.log('e.detail.column', e.detail);
-		data.multiIndex[e.detail.column] = e.detail.value;
+		// console.log('e.detail.column', e.detail);
+		data.multiIndex[column] = value;
 		// 列值
-		switch (e.detail.column) {
-		  case 0:
-			data.multiArray[1] = this.data.nextMultiArray[data.multiIndex[0]];
-			data.multiIndex[1] = 0;
-			break;
+		switch (column) {
+			case 0:
+				data.multiArray[1] = this.data.nextMultiArray[data.multiIndex[0]];
+				data.multiIndex[1] = 0;
+				break;
 		}
 		this.setData(data);
 	},
-	requestCategory: function(options = {}) {
+	requestCategory: function (options = {}) {
 		request({
 			key: 'getJianghuCategory',
 			success: (res) => {
-				if(res.success) {
+				if (res.success) {
 					let sourceMultiArray = res.data
 					let currentMultiArray = []
 					let nextMultiArray = []
@@ -68,45 +75,46 @@ Page({
 			}
 		})
 	},
-	requestCardInfo: function() {
+	requestCardInfo: function () {
 		request({
 			key: 'getHuamingAndJianghuAndTrace',
 			isLogin: true,
 			success: (res) => {
-				if(res.success) {
+				if (res.success) {
 					let jianghuList = res.data.jianghuList
 					let currentGameInfo = {}
 					// 查询目标江湖信息
-					console.log('jianghuList', jianghuList);
 					jianghuList.forEach((data) => {
-						if(Number(this.data.searchMap.gameId) === data.id) {
+						if (Number(this.data.searchMap.gameId) === data.id) {
 							currentGameInfo = data
 						}
 					})
-					console.log('currentGameInfo', currentGameInfo);
 					let topIndex = 0
 					let nextIndex = 0
 					let isFind = false
 					const sourceMultiArray = this.data.sourceMultiArray
 					// 查询行业下标一级
-					for(let i = 0, l = sourceMultiArray.length; i < l; i++) {
+					for (let i = 0, l = sourceMultiArray.length; i < l; i++) {
 						const topCatetory = sourceMultiArray[i]
 						topIndex = i
 						// 查询行业下标二级
-						for(let n = 0, m = topCatetory.nextLevelList.length; n < m; n++) {
+						for (let n = 0, m = topCatetory.nextLevelList.length; n < m; n++) {
 							const nextCatetory = topCatetory.nextLevelList[n]
 							nextIndex = n
-							if(nextCatetory.id === currentGameInfo.jianghuConstantId) {
+							if (nextCatetory.id === currentGameInfo.jianghuConstantId) {
 								isFind = true
 								break
 							}
 						}
-						if(isFind) {
+						if (isFind) {
 							break
 						}
 					}
 
+					const multiArray = this.data.multiArray
+					multiArray[1] = this.data.nextMultiArray[topIndex]
 					this.setData({
+						multiArray,
 						multiIndex: [topIndex, nextIndex],
 						jianghuSite: currentGameInfo.jianghuSite
 					})
@@ -120,15 +128,15 @@ Page({
 			}
 		})
 	},
-	requestSave: function(e) {
+	requestSave: function (e) {
 		const nextLevelList = this.data.sourceMultiArray[this.data.multiIndex[0]].nextLevelList[this.data.multiIndex[1]]
 		const params = {
 			jianghuConstantId: nextLevelList.id,
-			jianghuName: nextLevelList.jianghuName,
+			// jianghuName: nextLevelList.jianghuName,
 			jianghuSite: e.detail.value.jianghuSite
 		}
 
-		if(this.data.searchMap.gameId) {
+		if (this.data.searchMap.gameId) {
 			params.id = this.data.searchMap.gameId
 		}
 		request({
@@ -139,7 +147,7 @@ Page({
 				value: JSON.stringify(params)
 			},
 			success: (res) => {
-				if(res.success) {
+				if (res.success) {
 					wx.showToast({
 						title: '保存成功！',
 						mask: true
