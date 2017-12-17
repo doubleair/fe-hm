@@ -7,7 +7,6 @@ var {
 const { request } = require('../../lib/request')
 const urlx = require('../../lib/urlx')
 
-
 let isRequest = false
 let lockRequest = false
 
@@ -20,68 +19,35 @@ Page({
 		isFinish: false,
 		windowWidth: 0
 	},
-	gotoOfficialDetail: function(e) {
-        wx.navigateTo({
-            url: `../officialDetail/index?officialId=${this.data.urlParams.officialId}`
-        })
-	},
-	gotoOfficialInfoDetail: function(e) {
-		const params = {
-			...e.currentTarget.dataset.params,
-			...this.data.official
-		}
-        wx.navigateTo({
-            url: `../info/index${urlx.stringify({
-				officialInfoId: params.officialInfoId
-			}, true)}`
-        })
-	},
-	handleOfficialFocus: function(e) {
-		const { params, isfocus } = e.currentTarget.dataset		
-		request({
-			key: 'dynamicFocus',
-			data: {
-				officialId: params.officialId,
-				isOfficialFocus: isfocus
-			},
-			isLogin: true,
-			success: (res) => {
-				if(res.code === 200) {
-					this.requestOfficialGetOfficialDetail()
-				}
-			}
-		})
-	},
 	onPullDownRefresh: function() {
 		if(isRequest) return
 		if(!lockRequest) {
 			lockRequest = true
-			this.requestRule({
+			this.requestGetFollowList({
 				page: 1,
 				pageSize: 10,
 				wxScrollType: 'top'
 			})
 		}
 	},
-	requestRule: function(options = {}) {
+	requestGetFollowList: function(options = {}) {
 		const { page, pageSize, wxScrollType } = options
 		if(!this.data.isFinish || wxScrollType === 'top') {
 			isRequest = true
 			let officialInfoList = this.data.officialInfoList
 			request({
-				key: 'infoGetOfficialInfoList',
+				key: 'getFollowList',
 				data: {
-					officialId: this.data.urlParams.officialId,
 					page: page || 1,
 					pageSize: pageSize || 10
 				},
 				success: (res) => {
 					wx.hideToast()
-					if(res.code === 200) {
-						const _officialInfoList = res.data.officialInfoList
-						const official = res.data.official
+					if(res.success) {
+						const _followList = res.data.followList || []
+						let followList = this.data.followList || []
 						if(wxScrollType === 'top') {
-							officialInfoList = _officialInfoList
+							followList = _followList
 							wx.stopPullDownRefresh()
 							wx.showToast({
 								title: '刷新成功',
@@ -89,17 +55,15 @@ Page({
 								duration: 1200
 							})
 						} else {
-							officialInfoList = officialInfoList.concat(_officialInfoList)
+							followList = followList.concat(_followList)
 						}
 						setTimeout(() => {
 							isRequest = false
 							this.setData({
 								page: page,
 								pageSize: pageSize,
-								official: official,
-								officialInfoList: officialInfoList,
-								isFinish: _officialInfoList.length === 0
-		
+								followList: followList,
+								isFinish: _followList.length === 0
 							})
 							lockRequest = false
 						})
@@ -109,37 +73,53 @@ Page({
 		}
 		wx.hideLoading()
 	},
+	requestFollow: function(e) {
+		const index = e.target.dataset.index
+		const huamingId = e.target.dataset.huamingid
+		const followList = this.data.followList
+		const followInfo = followList[index]
+
+		followList[index].hasNotFollow = !followInfo.hasNotFollow
+		this.setData({
+			followList
+		})
+
+		request({
+			key: 'follow',
+			data: {
+				huamingId: huamingId
+			},
+			isLogin: true,
+			success: (res) => {
+				if(res.success) {
+					followList[index].hasNotFollow = !res.data.followed
+					this.setData({
+						followList
+					})
+				}
+			},
+			fial: (res) => {
+				wx.showToast({
+					title: `请求服务失败`,
+					mask: true
+				})
+			}
+		})
+	},
 	onReachBottom: function(e) {
 		if(isRequest) return
 		if(!lockRequest) {
-			this.requestRule({
+			this.requestGetFollowList({
 				page: this.data.page + 1,
 				pageSize: this.data.pageSize
 			})
 		}
 	},
-	requestOfficialGetOfficialDetail: function() {
-		request({
-			key: 'officialGetOfficialDetail',
-			data: {
-				officialId: this.data.urlParams.officialId,
-			},
-			success: (res) => {
-				wx.hideToast()
-				if(res.code === 200) {
-					const officialInfo = res.data.officialInfo
-					this.setData({
-						official: officialInfo
-					})
-				}
-			}
-		})
-	},
 	onLoad: function (res) {
 		this.setData({
 			urlParams: res
 		})
-		this.requestRule({
+		this.requestGetFollowList({
 			page: 1, 
 			pageSize: 10,
 		})
@@ -147,6 +127,5 @@ Page({
 			title: '加载中...',
 			mask: true
 		})
-		this.requestOfficialGetOfficialDetail()
 	}
 })

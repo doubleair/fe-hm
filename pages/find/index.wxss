@@ -125,36 +125,66 @@
 
 
 .bucard-t1 {
-    padding-left: 40rpx;
-    border-left: 6rpx solid #3385FF;
-    font-size: 45rpx;
+    /* padding-left: 20rpx; */
+    /* border-left: 6rpx solid #3385FF; */
+    font-size: 40rpx;
     color: #4C4C4C;
-    margin-bottom: 24rpx;
+    margin-bottom: 10rpx;
 }
 
 .bucard-t2 {
-    padding-left: 40rpx;
-    font-size: 30rpx;
+    /* padding-left: 20rpx; */
+    font-size: 25rpx;
     color: #6F6F6F;
-    margin-bottom: 30rpx;
+    /* margin-bottom: 30rpx; */
 }
 
 .bucard-item-v1 {
     overflow: hidden;
+    padding: 0 20rpx;
 }
 
 .bucard-item-v1-1 {
     float: left;
-    width: 70%;
+    width: 50%;
 }
 
 .bucard-item-v1-2 {
-    padding-right: 40rpx;
-    float: right;
+    /* padding-right: 40rpx; */
+    width: 150rpx;
+    height: 110rpx;
+    float: left;
+    padding-right: 20rpx;
 }
 
 .bucard-item-pic {
-    width: 120rpx;
-    height: 120rpx;
+    width: 110rpx;
+    height: 110rpx;
     border-radius: 50%;
+}
+
+.follow-container {
+    display: flex;
+    float: right;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    height: 110rpx;
+}
+
+.follow {
+    width: 150rpx;
+    height: 70rpx;
+    line-height: 70rpx;
+    color: #fff;
+    font-size: 26rpx;
+    background-color: #999;
+}
+
+.follow.active {
+    background-color: #3385ff;
+}
+
+.follow::before {
+    border: 0;
 }

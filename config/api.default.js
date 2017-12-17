@@ -7,8 +7,10 @@ const apiMap = {
     getJianghuCategory: 'huaming/huamingInfo/getJianghuCategory',
     getHuamingAndJianghuAndTrace: 'huaming/huamingInfo/getHuamingAndJianghuAndTrace',
     getHuamingInfo: 'huaming/huamingInfo/getHuamingInfo',
-    like: 'huaming/activity/like'
-    
+    like: 'huaming/activity/like',
+    follow: 'huaming/activity/follow',
+    getFollowList: 'huaming/activity/getFollowList',
+    share: 'huaming/activity/share'
     // userValid: '/rest/official/user/valid',
     // infoCreate: '/rest/official/info/create',
     // infoGet: '/rest/official/info/get',

@@ -1,19 +1,7 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/officialList/index",
-    "pages/officialDetail/index",
-    "pages/officialInfoList/index",
-    "pages/officialInfoDetail/index",
-    "pages/officialInfoDetailShare/index",
     "pages/my/index",
-    "pages/myOfficialDetail/index",
-    "pages/myOfficialApply/index",
-    "pages/myDynamic/index",
-    "pages/myOfficialInfoList/index",
-    "pages/myOfficialInfoDetail/index",
-    "pages/send/index",
-    "pages/sendConf/index",
     "pages/find/index",
     "pages/info/index",
     "pages/cardInfo/index",
@@ -46,7 +34,7 @@
       },
       {
         "pagePath": "pages/find/index",
-        "text": "发现",
+        "text": "收藏",
         "iconPath": "./pic/official/find.png",
         "selectedIconPath": "./pic/official/find-active.png"
       },

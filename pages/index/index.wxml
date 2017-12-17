@@ -20,9 +20,9 @@
                                 <view class="hm-detail-header-v3-fun-icon {{liked ? 'colorBlue' : ''}} iconfont icon-zan"></view>
                                 <view class="{{liked ? 'colorBlue' : ''}}">{{likedNum}}</view>
                             </view>
-                            <view class='hm-detail-header-v3-fun'>
-                                <view class='hm-detail-header-v3-fun-icon iconfont icon-shoucang'></view>
-                                <view class=''>{{sharedNum}}</view>
+                            <view class='hm-detail-header-v3-fun' bindtap='requestFollow'>
+                                <view class="hm-detail-header-v3-fun-icon {{followed ? 'colorBlue' : ''}} iconfont icon-shoucang"></view>
+                                <view class="{{followed ? 'colorBlue' : ''}}">{{followedNum || 0}}</view>
                             </view>
                         </view>
                     </view>
@@ -41,9 +41,7 @@
 
         <view class='hm-detail-layout-1-body'>
             <view class='hm-detail-layout-1-item' wx:for='{{jianghuList}}' wx:key='{{item.id}}'>
-                <web-view src="https://mp.weixin.qq.com/">
-                    <image class='hm-detail-layout-1-pic' src="https://gss2.bdstatic.com/-fo3dSag_xI4khGkpoWK1HF6hhy/baike/w%3D268%3Bg%3D0/sign=fc01334b798b4710ce2ffacafbf5a4c0/1b4c510fd9f9d72a26f9db77df2a2834349bbb3f.jpg" />
-                </web-view>
+                <image class='hm-detail-layout-1-pic' src="https://gss2.bdstatic.com/-fo3dSag_xI4khGkpoWK1HF6hhy/baike/w%3D268%3Bg%3D0/sign=fc01334b798b4710ce2ffacafbf5a4c0/1b4c510fd9f9d72a26f9db77df2a2834349bbb3f.jpg" />
             </view>
         </view>
     </view>
@@ -53,7 +51,7 @@
             <view class='hm-detail-layout-1-line'></view>
             <view class='hm-detail-layout-1-t1'>标签</view>
             <view class='hm-detail-layout-1-t2'>点击图标，查看Ta的信息吧...</view>
-            <view class='hm-detail-layout-1-fun'>添加标签<text class='iconfont icon-you'></text></view>
+            <view class='hm-detail-layout-1-fun' bindtap='gotoTag'>添加标签<text class='iconfont icon-you'></text></view>
         </view>
 
         <view class='hm-detail-layout-2-body'>
