@@ -1,0 +1,35 @@
+@import '../../app.wxss';
+
+/* page {
+    background-color: #fff;
+} */
+
+.edit-header {
+    padding: 25rpx 40rpx;
+    font-size: 45rpx;
+    color: #4C4C4C;
+    background-color: #fff;
+}
+
+.edit-input-container {
+    background-color: #fff;
+    padding: 40rpx;
+}
+
+.edit-input-border {
+    border-bottom: 4rpx solid #3385FF;
+    padding: 10rpx 20rpx;
+}
+
+.edit-submit {
+    position: absolute;
+    bottom: 60rpx;
+    left: 20rpx;
+    right: 20rpx;
+    background-color: #3385FF;
+    color: #fff;
+}
+
+.edit-input {
+    font-size: 40rpx;
+}

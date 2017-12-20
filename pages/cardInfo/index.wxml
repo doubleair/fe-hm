@@ -48,11 +48,11 @@
 
         <view class='my-func'>
             <view class='my-func-group'>
-                <view class='my-func-item'>
+                <view class='my-func-item' bindtap="gotoEditTag">
                     <view class='my-func-item-label fleft'>标签</view>
                     <view class='fright'>
                         <view class='color999 iconfont icon-you fright'></view>
-                        <view class='my-func-item-text ellipsis1 fright'># Dota狂魔 #、# 迟迟 #</view>
+                        <view class='my-func-item-text ellipsis1 fright'>{{tagFE}}</view>
                     </view>
                 </view>
             </view>

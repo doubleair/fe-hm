@@ -10,7 +10,9 @@
     "pages/editTraceList/index",
     "pages/editTrace/index",
     "pages/editGameList/index",
-    "pages/editGame/index"
+    "pages/editGame/index",
+    "pages/editTag/index",
+    "pages/addTag/index"
   ],
   "window": {
     "navigationBarBackgroundColor": "#3385ff",

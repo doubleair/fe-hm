@@ -9,15 +9,12 @@ let isRequest = false
 let lockRequest = false
 Page({
 	data: {
-		userInfo: {},
-		officialInfo: {},
 		followed: false,
 		followedNum: 0,
 		liked: false,
 		likedNum: 0
 	},
 	onShareAppMessage: function(res) {
-		console.log('ssss', res);
 		if (res.from === 'button') {
 			// 来自页面内转发按钮
 			console.log(res.target)
@@ -39,21 +36,22 @@ Page({
             url: `../cardInfo/index`
         })
 	},
-	gotoTag: function() {
+	gotoAddTag: function() {
+		console.log('tsdadas', this);
 		wx.navigateTo({
-            url: `../info/index`
+            url: `../addTag/index?huamingId=${this.data.huamingId}`
         })
 	},
 	requestLike: function() {
 		if(this.data.liked) {
 			this.setData({
 				liked: !this.data.liked,
-				likedNum: this.data.liked - 1
+				likedNum: this.data.likedNum - 1
 			})
 		} else {
 			this.setData({
 				liked: !this.data.liked,
-				likedNum: this.data.liked + 1
+				likedNum: this.data.likedNum + 1
 			})
 		}
 		request({
@@ -64,17 +62,51 @@ Page({
 			isLogin: true,
 			success: (res) => {
 				if(res.success) {
-					if(this.data.liked) {
-						this.setData({
-							liked: res.data.liked,
-							likedNum: res.data.likedNum
-						})
-					} else {
-						this.setData({
-							liked: res.data.liked,
-							likedNum: res.data.likedNum
-						})
-					}
+					this.setData({
+						liked: res.data.liked,
+						likedNum: res.data.likedNum
+					})
+				}
+			},
+			fial: (res) => {
+				wx.showToast({
+					title: `请求服务失败`,
+					mask: true
+				})
+			}
+		})
+	},
+	requestLabelLike: function(e) {
+		const labelList = this.data.labelList
+		const labelListTemp = this.data.labelList
+		const index = e.currentTarget.dataset.index
+		if(this.data.labelList.liked) {
+			labelList[index].liked = !labelList[index].liked
+			labelList[index].likedNum = labelList[index].likedNum - 1
+			this.setData({
+				labelList
+			})
+		} else {
+			labelList[index].liked = !labelList[index].liked
+			labelList[index].likedNum = labelList[index].likedNum + 1
+			this.setData({
+				labelList
+			})
+		}
+		request({
+			key: 'labelLike',
+			data: {
+				huamingId: this.data.huamingId,
+				labelId: e.currentTarget.dataset.tagid
+			},
+			isLogin: true,
+			success: (res) => {
+				if(res.success) {
+					labelListTemp[index].liked = res.data.liked
+					labelListTemp[index].likedNum = res.data.likedNum
+					this.setData({
+						labelList: labelListTemp
+					})
 				}
 			},
 			fial: (res) => {
@@ -162,6 +194,13 @@ Page({
 				})
 			}
 		})
+	},
+	onshow: function(res) {
+		console.log('dddssssonshowonshow');
+		var appInstance = getApp()
+
+		this.setData({ courseItems: appInstance.gCourse })
+		console.log('dsdas', appInstance);
 	},
 	onLoad: function (res) {
 		this.setData({

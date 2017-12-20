@@ -75,6 +75,10 @@ view, scroll-view, swiper, movable-area, cover-view {
 	color: #3385FF;	
 }
 
+.colorBlueBK {
+	background-color: #3385FF !important;
+}
+
 .ellipsis1 {
     overflow: hidden;
     white-space: nowrap;

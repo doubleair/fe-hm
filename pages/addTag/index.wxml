@@ -1,0 +1,15 @@
+<!--index.wxml-->
+
+<view class="container">
+
+	<view class='edit-header'>添加标签</view>
+    <form bindsubmit="requestSave" bindreset="formReset">
+        <view class='edit-input-container'>
+            <view class='edit-input-border'>
+                <input class='edit-input' type="text" placeholder="请输入标签" name='tagValue' auto-focus />
+            </view>
+        </view>
+
+        <button class='edit-bt edit-submit' formType="submit" size="defaultSize" hover-class="defaultTap">保存</button>
+    </form>
+</view>

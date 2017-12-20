@@ -10,7 +10,10 @@ const apiMap = {
     like: 'huaming/activity/like',
     follow: 'huaming/activity/follow',
     getFollowList: 'huaming/activity/getFollowList',
-    share: 'huaming/activity/share'
+    share: 'huaming/activity/share',
+    addLabel: 'huaming/huamingInfo/addLabel',
+    removeLabel: 'huaming/huamingInfo/removeLabel',
+    labelLike: 'huaming/huamingInfo/labelLike',
     // userValid: '/rest/official/user/valid',
     // infoCreate: '/rest/official/info/create',
     // infoGet: '/rest/official/info/get',

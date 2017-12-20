@@ -38,6 +38,11 @@ Page({
             url: `../editTraceList/index`
         })
 	},
+	gotoEditTag: function() {
+		wx.navigateTo({
+            url: `../editTag/index`
+        })
+	},
 	requestRule: function(options = {}) {
 		const { wxScrollType } = options
 		wx.showLoading({
@@ -58,10 +63,16 @@ Page({
 					let traceFE = res.data.traceList ? res.data.traceList.map((data) => {
 						return data.description
 					}) : []
+
+					let tagFE = res.data.labelList ? res.data.labelList.map((data) => {
+						return `# ${data.label} #`
+					}) : []
+
 					this.setData({
 						...res.data,
 						traceFE: traceFE.join('、'),
-						jianghuFE: jianghuFE.join('、')
+						jianghuFE: jianghuFE.join('、'),
+						tagFE: tagFE.join('、')
 					})
 
 				}

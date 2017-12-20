@@ -31,12 +31,14 @@
         </view>
     </view>
 
-    <view class='hm-detail-layout-1 m-bottom-20'>
+    <view class='hm-detail-layout-1 m-bottom-20' wx:if='jianghuList && jianghuList.length === 0'>
         <view class='hm-detail-layout-1-header'>
             <view class='hm-detail-layout-1-line'></view>
             <view class='hm-detail-layout-1-t1'>江湖</view>
             <view class='hm-detail-layout-1-t2'>点击图标，查看Ta的信息吧...</view>
+            <!--
             <view class='hm-detail-layout-1-fun'>查看更多<text class='iconfont icon-you'></text></view>
+            -->
         </view>
 
         <view class='hm-detail-layout-1-body'>
@@ -46,16 +48,16 @@
         </view>
     </view>
 
-    <view class='hm-detail-layout-1'>
+    <view class='hm-detail-layout-1' wx:if='labelList && labelList.length === 0'>
         <view class='hm-detail-layout-1-header'>
             <view class='hm-detail-layout-1-line'></view>
             <view class='hm-detail-layout-1-t1'>标签</view>
             <view class='hm-detail-layout-1-t2'>点击图标，查看Ta的信息吧...</view>
-            <view class='hm-detail-layout-1-fun' bindtap='gotoTag'>添加标签<text class='iconfont icon-you'></text></view>
+            <view class='hm-detail-layout-1-fun' bindtap='gotoAddTag' wx:if='{{huamingId}}'>添加标签<text class='iconfont icon-you'></text></view>
         </view>
 
         <view class='hm-detail-layout-2-body'>
-            <text class='hm-detail-layout-2-body-item'># 达大厦 #<text class='hm-detail-layout-2-body-item-count'>23</text></text>
+            <text class="hm-detail-layout-2-body-item {{item.liked ? 'colorBlueBK' : ''}}" wx:for='{{labelList}}' data-index='{{item.index}}' data-tagid='{{item.id}}' bindtap='requestLabelLike' wx:key='{{item.id}}'># {{item.label || '--'}} #<text class='hm-detail-layout-2-body-item-count'>{{item.likedNum || 0}}</text></text>
         </view>
     </view>
 
