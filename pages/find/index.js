@@ -30,6 +30,13 @@ Page({
 			})
 		}
 	},
+	gotoInfo: function(e) {
+		const huamingId = e.currentTarget.dataset.huamingid
+		console.log('huamingId', e, huamingId);
+		wx.navigateTo({
+            url: `../info/index?huamingId=${huamingId}`
+        })
+	},
 	requestGetFollowList: function(options = {}) {
 		const { page, pageSize, wxScrollType } = options
 		if(!this.data.isFinish || wxScrollType === 'top') {

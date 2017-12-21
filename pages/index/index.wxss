@@ -1,5 +1,9 @@
 @import '../../app.wxss';
 
+.container {
+    padding-bottom: 80rpx;
+}
+
 .hm-detail-header {
     height: 370rpx;
     padding: 30rpx;

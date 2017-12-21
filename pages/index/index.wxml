@@ -57,11 +57,10 @@
         </view>
 
         <view class='hm-detail-layout-2-body'>
-            <text class="hm-detail-layout-2-body-item {{item.liked ? 'colorBlueBK' : ''}}" wx:for='{{labelList}}' data-index='{{item.index}}' data-tagid='{{item.id}}' bindtap='requestLabelLike' wx:key='{{item.id}}'># {{item.label || '--'}} #<text class='hm-detail-layout-2-body-item-count'>{{item.likedNum || 0}}</text></text>
+            <text class="hm-detail-layout-2-body-item {{item.liked ? 'colorBlueBK' : ''}}" wx:for='{{labelList}}' data-index='{{index}}' data-tagid='{{item.id}}' bindtap='requestLabelLike' wx:key='{{item.id}}'># {{item.label || '--'}} #<text class='hm-detail-layout-2-body-item-count'>{{item.likedNum || 0}}</text></text>
         </view>
     </view>
 
-    <view class='global-layer-share iconfont icon-fenxiang1' bindtap="shareHM"></view>
 
     <button class='global-layer-share iconfont icon-fenxiang1' open-type="share"></button>
     <view class='global-layer iconfont icon-bianji' bindtap="gotoCardInfo"></view>

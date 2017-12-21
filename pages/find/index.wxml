@@ -8,7 +8,7 @@
 	<view class='bucard-list'>
 
 		<view class='bucard-item' wx:for='{{followList}}' wx:key='{{item, index}}'>
-			<view class='bucard-item-v1'>
+			<view class='bucard-item-v1' bindtap="gotoInfo" data-huamingid='{{item.id}}'>
 				<view class='bucard-item-v1-2'>
                 	<image class='bucard-item-pic' src="http://img3.imgtn.bdimg.com/it/u=2770691011,100164542&fm=27&gp=0.jpg" />
 				</view>

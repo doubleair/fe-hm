@@ -80,7 +80,8 @@ Page({
 		const labelList = this.data.labelList
 		const labelListTemp = this.data.labelList
 		const index = e.currentTarget.dataset.index
-		if(this.data.labelList.liked) {
+		console.log('sdads', this.data.labelList, this.data.labelList.liked);
+		if(this.data.labelList[index].liked) {
 			labelList[index].liked = !labelList[index].liked
 			labelList[index].likedNum = labelList[index].likedNum - 1
 			this.setData({
@@ -102,6 +103,7 @@ Page({
 			isLogin: true,
 			success: (res) => {
 				if(res.success) {
+					console.log('res.data', res.data);
 					labelListTemp[index].liked = res.data.liked
 					labelListTemp[index].likedNum = res.data.likedNum
 					this.setData({

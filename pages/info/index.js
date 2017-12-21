@@ -9,8 +9,10 @@ let isRequest = false
 let lockRequest = false
 Page({
 	data: {
-		userInfo: {},
-		officialInfo: {},
+		followed: false,
+		followedNum: 0,
+		liked: false,
+		likedNum: 0
 	},
 	onShareAppMessage: function(res) {
 		if (res.from === 'button') {
@@ -18,10 +20,10 @@ Page({
 			console.log(res.target)
 		}
 		return {
-			title: '小八八发送了「小九九」',
+			title: this.data.huaming + '花名片',
 			path: `/pages/index`,
 			success: (res) => {
-				
+				this.requestShare()
 			},
 			fail: function(res) {
 				// 转发失败
@@ -29,114 +31,184 @@ Page({
 			}
 		}
 	},
-	gotoMyOfficialDetail: function() {
+	gotoCardInfo: function() {
 		wx.navigateTo({
-            url: `../myOfficialDetail/index?officialId=${this.data.userInfo.officialId}`
+            url: `../cardInfo/index`
         })
 	},
-	gotoMyOfficialApply: function() {
+	gotoAddTag: function() {
 		wx.navigateTo({
-            url: `../myOfficialApply/index`
+            url: `../addTag/index?huamingId=${this.data.huamingId}`
         })
 	},
-    gotoSend: function(e) {
-        wx.navigateTo({
-            url: `../send/index`
-        })
-	},
-	gotoMyOfficialInfoList: function(e) {
-		const { officialId } = this.data.userInfo
-		wx.navigateTo({
-            url: `../myOfficialInfoList/index?officialId=${officialId}`
-        })
-	},
-	gotoMyDynamic: function(e) {
-		wx.navigateTo({
-            url: `../myDynamic/index`
-        })
-	},
-	onPullDownRefresh: function() {
-		if(isRequest) return
-		if(!lockRequest) {
-			lockRequest = true
-			this.requestRule({
-				wxScrollType: 'top'
+	requestLike: function() {
+		if(this.data.liked) {
+			this.setData({
+				liked: !this.data.liked,
+				likedNum: this.data.likedNum - 1
+			})
+		} else {
+			this.setData({
+				liked: !this.data.liked,
+				likedNum: this.data.likedNum + 1
 			})
 		}
-	},
-	requestRule: function(options = {}) {
-		const { wxScrollType } = options
-		wx.showLoading({
-			title: '加载中...',
-			mask: true
-		})
-		console.log('wxScrollType1111', wxScrollType);
-		getEnhanceUserInfo((wxSessionCode, userInfo) => {
-			request({
-				key: 'userValid',
-				data: {
-					...userInfo,
-				},
-				isLogin: true,
-				success: (res) => {
-					console.log('ddss', res);
-					if(res.code === 200) {
-						this.setData({
-							userInfo: {
-								...userInfo,
-								...res.data.userInfo
-							}
-						})
-						if(wxScrollType === 'top') {
-							wx.stopPullDownRefresh()
-							wx.showToast({
-								title: '刷新成功',
-								icon: 'success',
-								duration: 1200
-							})
-						}
-						if(res.data.userInfo.officialId) {
-							request({
-								key: 'officialGetOfficialDetail',
-								isLogin: true,
-								data: {
-									officialId: res.data.userInfo.officialId
-								},
-								success: (res) => {
-									if(res.code === 200) {
-										console.log('wxScrollType', wxScrollType);
-										
-										setTimeout(() => {
-											isRequest = false
-											this.setData({
-												officialInfo: res.data.officialInfo,
-											})
-											lockRequest = false
-										})
-									} else {
-										wx.showToast({
-											title: '加载失败',
-											icon: 'fial',
-											duration: 1200
-										})
-									}
-								}
-							})
-						}
-					}
-				},
-				fial: () => {
+		request({
+			key: 'like',
+			data: {
+				huamingId: this.data.huamingId
+			},
+			isLogin: true,
+			success: (res) => {
+				if(res.success) {
+					this.setData({
+						liked: res.data.liked,
+						likedNum: res.data.likedNum
+					})
 				}
-			})
-			wx.hideLoading()
-		}, (res) => {
-			wx.hideLoading()
+			},
+			fial: (res) => {
+				wx.showToast({
+					title: `请求服务失败`,
+					mask: true
+				})
+			}
 		})
+	},
+	requestLabelLike: function(e) {
+		const labelList = this.data.labelList
+		const labelListTemp = this.data.labelList
+		const index = e.currentTarget.dataset.index
+
+		if(this.data.labelList[index].liked) {
+			labelList[index].liked = !labelList[index].liked
+			labelList[index].likedNum = labelList[index].likedNum - 1
+			this.setData({
+				labelList
+			})
+		} else {
+			labelList[index].liked = !labelList[index].liked
+			labelList[index].likedNum = labelList[index].likedNum + 1
+			this.setData({
+				labelList
+			})
+		}
+		request({
+			key: 'labelLike',
+			data: {
+				huamingId: this.data.huamingId,
+				labelId: e.currentTarget.dataset.tagid
+			},
+			isLogin: true,
+			success: (res) => {
+				if(res.success) {
+					labelListTemp[index].liked = res.data.liked
+					labelListTemp[index].likedNum = res.data.likedNum
+					this.setData({
+						labelList: labelListTemp
+					})
+				}
+			},
+			fial: (res) => {
+				wx.showToast({
+					title: `请求服务失败`,
+					mask: true
+				})
+			}
+		})
+	},
+	requestFollow: function() {
+		if(this.data.followed) {
+			this.setData({
+				followed: !this.data.followed,
+				followedNum: this.data.followed - 1
+			})
+		} else {
+			this.setData({
+				followed: !this.data.followed,
+				followedNum: this.data.followed + 1
+			})
+		}
+		request({
+			key: 'follow',
+			data: {
+				huamingId: this.data.huamingId
+			},
+			isLogin: true,
+			success: (res) => {
+				if(res.success) {
+					if(this.data.followed) {
+						this.setData({
+							followed: res.data.followed,
+							followedNum: res.data.followedNum
+						})
+					} else {
+						this.setData({
+							followed: res.data.followed,
+							followedNum: res.data.followedNum
+						})
+					}
+				}
+			},
+			fial: (res) => {
+				wx.showToast({
+					title: `请求服务失败`,
+					mask: true
+				})
+			}
+		})
+	},
+	requestShare: function() {
+		request({
+			key: 'share',
+			data: {
+				huamingId: this.data.huamingId
+			},
+			isLogin: true,
+			success: (res) => {},
+			fial: (res) => {
+				wx.showToast({
+					title: `请求服务失败`,
+					mask: true
+				})
+			}
+		})
+	},
+	requestCardInfo: function() {
+		const params = {}
+		const searchMap = this.data.searchMap || {}
+		if(searchMap.huamingId) {
+			params.huamingId = searchMap.huamingId
+		}
+		request({
+			key: 'getHuamingAndJianghuAndTrace',
+			isLogin: true,
+			data: params,
+			success: (res) => {
+				if(res.success) {
+					let traceList = res.data.traceList && res.data.traceList.length > 2 ? res.data.traceList.slice(0, 2) : res.data.traceList
+					this.setData({
+						...res.data,
+						traceList
+					})
+				}
+			},
+			fial: (res) => {
+				wx.showToast({
+					title: `请求服务失败`,
+					mask: true
+				})
+			}
+		})
+	},
+	onshow: function(res) {
+		var appInstance = getApp()
+		this.setData({ courseItems: appInstance.gCourse })
 	},
 	onLoad: function (res) {
 		this.setData({
-			urlParams: res
+			searchMap: res
 		})
-		this.requestRule()
+		this.requestCardInfo()
 	}
 })

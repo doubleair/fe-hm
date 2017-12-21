@@ -1,7 +1,7 @@
 @import '../../app.wxss';
 
-page {
-    background-color: #F5F7FA;
+.container {
+    padding-bottom: 80rpx;
 }
 
 .hm-detail-header {
@@ -45,32 +45,18 @@ page {
     padding-bottom: 20rpx;
 }
 
-/* .hm-detail-header-v3 {
-    padding: 20rpx 0;
-    overflow: hidden;
-} */
-
 .hm-detail-header-v3-1 {
-    display: table;
     height: 110rpx;
     float: left;
     width: 50%;
     border-right: 1rpx solid #EAEAEA;
 }
 
-.hm-detail-header-t3 {
-    display: table-cell;
-    vertical-align: middle;
+.hm-detail-header-t3-t1 {
+    flex: 1;
     color: #6F6F6F;
     font-size: 28rpx;
-}
-
-/* 两行数据时使用 */
-.hm-detail-header-t3-tp1 {
-    display: table-column;
-    vertical-align: middle;
-    color: #6F6F6F;
-    font-size: 28rpx;
+    line-height: 55rpx;    
 }
 
 .pink::before {
@@ -91,10 +77,12 @@ page {
     color: #6F6F6F;
     font-size: 26rpx;
     border-radius: 4rpx;
+    box-shadow: 0 0 60rpx 2rpx rgba(0, 0, 0, 0.2);
 }
 
 .hm-detail-header-v3-fun-container {
     display: flex;
+    padding-top: 8rpx;
 }
 
 .hm-detail-header-v3-fun {
@@ -174,13 +162,15 @@ page {
 
 .hm-detail-layout-2-body-item {
     display: inline-block;
-    background-color: #4A90E2;
+    background-color: #CACACA;
     color: #fff;
     font-size: 26rpx;
     padding: 0 28rpx;
     height: 66rpx;
     line-height: 66rpx;
     border-radius: 12rpx;
+    margin-right: 20rpx;
+    margin-bottom: 20rpx;
 }
 
 .hm-detail-layout-2-body-item-count {
@@ -199,5 +189,20 @@ page {
     border-radius: 50%;
     background-color: #3385FF;
     color: #fff;
-    box-shadow: 0 0 60rpx 2rpx rgba(0, 0, 0, 0.2);    
+    box-shadow: 0 0 60rpx 2rpx rgba(0, 0, 0, 0.2);
+}
+
+.global-layer-share {
+    position: fixed;
+    bottom: 20rpx;
+    right: 160rpx;
+    font-size: 34rpx;
+    width: 100rpx;
+    height: 100rpx;
+    line-height: 100rpx;
+    text-align: center;
+    border-radius: 50%;
+    background-color: #3385FF;
+    color: #fff;
+    box-shadow: 0 0 60rpx 2rpx rgba(0, 0, 0, 0.2);
 }

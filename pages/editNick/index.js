@@ -30,28 +30,47 @@ Page({
 			}
 		})
 	},
-	requestRule: function(options = {}) {
-		wx.showLoading({
-			title: '加载中...',
-			mask: true
-		})
+	// requestRule: function(options = {}) {
+	// 	wx.showLoading({
+	// 		title: '加载中...',
+	// 		mask: true
+	// 	})
+	// 	request({
+	// 		key: 'getHuamingInfo',
+	// 		isLogin: true,
+	// 		success: (res) => {
+	// 			if(res.success) {
+	// 				this.setData({
+	// 					huaming: res.data.huaming
+	// 				})
+	// 			}
+	// 		}
+	// 	})
+	// 	wx.hideLoading()
+	// },
+	requestCardInfo: function() {
 		request({
-			key: 'getHuamingInfo',
+			key: 'getHuamingAndJianghuAndTrace',
 			isLogin: true,
 			success: (res) => {
 				if(res.success) {
 					this.setData({
-						huaming: res.data.huaming
+						...res.data
 					})
 				}
+			},
+			fial: (res) => {
+				wx.showToast({
+					title: `请求服务失败`,
+					mask: true
+				})
 			}
 		})
-		wx.hideLoading()
 	},
 	onLoad: function (res) {
 		this.setData({
-			urlParams: res
+			searchMap: res
 		})
-		this.requestRule()
+		this.requestCardInfo()
 	}
 })
