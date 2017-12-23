@@ -7,7 +7,7 @@
                 <image class='hm-detail-header-pic fright' src="http://img3.imgtn.bdimg.com/it/u=2770691011,100164542&fm=27&gp=0.jpg" />
             </view>
             <view class='hm-detail-header-v2'>
-                <view class='hm-detail-header-t2 ellipsis1'>{{introduction || '匆匆过客，暂无信息'}}</view>
+                <view class='hm-detail-header-t2 ellipsis1'>{{introduction || '这位客官，暂无话可说。'}}</view>
             </view>
             <view class='hm-detail-header-v3'>
                 <view class='hm-detail-header-v3-1'>

@@ -13,6 +13,10 @@ Page({
 		labelList: []
 	},
 	requestCardInfo: function() {
+		wx.showLoading({
+			title: '加载中...',
+			mask: true
+		})
 		request({
 			key: 'getHuamingAndJianghuAndTrace',
 			isLogin: true,
@@ -54,13 +58,9 @@ Page({
 		})
 	},
 	onLoad: function (res) {
-		wx.showLoading({
-			title: '加载中...',
-			mask: true
-		})
 		this.setData({
 			searchMap: res
 		})
-		this.requestCardInfo()
+		// this.requestCardInfo()
 	}
 })

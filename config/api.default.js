@@ -14,6 +14,7 @@ const apiMap = {
     addLabel: 'huaming/huamingInfo/addLabel',
     removeLabel: 'huaming/huamingInfo/removeLabel',
     labelLike: 'huaming/huamingInfo/labelLike',
+    uploadAvatar: 'huaming/huamingInfo/uploadAvatar'
     // userValid: '/rest/official/user/valid',
     // infoCreate: '/rest/official/info/create',
     // infoGet: '/rest/official/info/get',

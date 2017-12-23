@@ -3,7 +3,10 @@
 <view class="container">
 
 	<view class='edit-header'>标签</view>
-        <view class='edit-container'>
-            <text class="hm-detail-layout-2-body-item {{item.liked ? 'colorBlueBK' : ''}}" wx:for='{{labelList}}' data-tagid='{{item.id}}' bindtap='requestRemoveLabel' wx:key='{{item.id}}'># {{item.label || '--'}} #<text class='hm-detail-layout-2-body-item-count'>{{item.likedNum || 0}}</text><text class='iconfont icon-shanchu hm-detail-layout-2-body-item-count'></text></text>
-        </view>
+    <view class='edit-container' wx:if='{{labelList && labelList.length !== 0}}'>
+        <text class="hm-detail-layout-2-body-item {{item.liked ? 'colorBlueBK' : ''}}" wx:for='{{labelList}}' data-tagid='{{item.id}}' bindtap='requestRemoveLabel' wx:key='{{item.id}}'># {{item.label || '--'}} #<text class='hm-detail-layout-2-body-item-count'>{{item.likedNum || 0}}</text><text class='iconfont icon-shanchu hm-detail-layout-2-body-item-count'></text></text>
+    </view>
+    <view class='jianghu-undefined-container' wx:else>
+        <view class='jianghu-undefined-small-t1'>暂无江湖内容，大家对您还不太了解！</view>
+    </view>
 </view>

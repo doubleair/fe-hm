@@ -5,14 +5,20 @@
 
     <view class='edit-input-container'>
         <view class='my-func-group'>
-            <view class='my-func-item' bindtap='gotoEditGame' wx:for='{{gameList}}' data-gameid='{{item.id}}' wx:key='{{item.id}}'>
-                <view class='overflow-hidden'>
-                    <view class='my-func-item-label fleft'>行业</view>
-                    <view class='width80p fright'>
-                        <view class='color999 iconfont icon-you fright margin-top-1-3'></view>
-                        <view class="picker text-right">{{item.jianghuConstantParentName}}/{{item.jianghuName}}</view>
+            <view wx:if='{{gameList && gameList.length !== 0}}'>
+                <view class='my-func-item' bindtap='gotoEditGame' wx:for='{{gameList}}' data-gameid='{{item.id}}' wx:key='{{item.id}}'>
+                    <view class='overflow-hidden'>
+                        <view class='my-func-item-label fleft'>行业</view>
+                        <view class='width80p fright'>
+                            <view class='color999 iconfont icon-you fright margin-top-1-3'></view>
+                            <view class="picker text-right">{{item.jianghuConstantParentName}}/{{item.jianghuName}}</view>
+                        </view>
                     </view>
                 </view>
+            </view>
+            <view wx:else>
+                <view class='jianghu-undefined-bt' bindtap="gotoEditGameNew">立即添加</view>
+                <view class='jianghu-undefined-small-t1'>暂无江湖内容，大家对您还不太了解！</view>
             </view>
         </view>
     </view>

@@ -3,13 +3,12 @@
 <view class="container">
 	<view class='my'>
         <view class='my-item-msg'>
-            <view class='my-item-header'>
+            <view class='my-item-header' bindtap="uploadPic">
                 <text class='my-nickname fleft'>头像</text>
                 <view class='my-userhead'>
-                    <image class='my-userhead-pic' src="http://img3.imgtn.bdimg.com/it/u=2770691011,100164542&fm=27&gp=0.jpg" />
+                    <image class='my-userhead-pic' src="{{avatarUrl}}" />
                     <view class='color999 iconfont icon-you fright'></view>
                 </view>
-                
             </view>
         </view>
 
@@ -26,7 +25,7 @@
                     <view class='my-func-item-label fleft'>简说</view>
                     <view class='fright'>
                         <view class='color999 iconfont icon-you fright'></view>
-                        <view class='my-func-item-text ellipsis1 fright'>{{introduction}}</view>
+                        <view class='my-func-item-text ellipsis1 fright'>{{introduction || '这位客官，暂无话可说。'}}</view>
                     </view>
                 </view>
                 <view class='my-func-item' bindtap="gotoEditGameList">

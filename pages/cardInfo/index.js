@@ -3,7 +3,7 @@
 var app = getApp()
 var { api } = require('../../config/api.default')
 const { getEnhanceUserInfo } = require('../../lib/authorize')
-const { request } = require('../../lib/request')
+const { request, uploadFile } = require('../../lib/request')
 
 let isRequest = false
 let lockRequest = false
@@ -16,7 +16,8 @@ Page({
 		jianghuList: [],
 		jianghuFE: [],
 		traceList: [],
-		traceFE: []
+		traceFE: [],
+		avatarUrl: ''
 	},
 	gotoEditNick: function() {
 		wx.navigateTo({
@@ -42,6 +43,28 @@ Page({
 		wx.navigateTo({
             url: `../editTag/index`
         })
+	},
+	uploadPic: function() {
+		wx.chooseImage({
+			count: 1,
+			sizeType: ['compressed'],
+			success: (res) => {
+				const tempFilePaths = res.tempFilePaths
+				uploadFile({
+					key: 'uploadAvatar',
+					filePath: tempFilePaths[0],
+					isLogin: true,
+					success: (res) => {
+						if(res.success) {
+							console.log('dddsss', res.data.avatarUrl);
+							this.setData({
+								avatarUrl: res.data.avatarUrl
+							})
+						}
+					}
+				})
+			}
+		})
 	},
 	requestRule: function(options = {}) {
 		const { wxScrollType } = options
@@ -85,7 +108,13 @@ Page({
 	},
 	onLoad: function (res) {
 		this.setData({
-			urlParams: res
+			searchMap: res
+		})
+		getEnhanceUserInfo((code, userInfo) => {
+			this.setData({
+				...userInfo,
+				huaming: userInfo.nickName
+			})
 		})
 		this.requestRule()
 	}

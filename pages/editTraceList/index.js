@@ -18,6 +18,10 @@ Page({
         })
 	},
 	requestCardInfo: function() {
+		wx.showLoading({
+			title: '加载中...',
+			mask: true
+		})
 		request({
 			key: 'getHuamingAndJianghuAndTrace',
 			isLogin: true,
@@ -28,12 +32,14 @@ Page({
 						traceList
 					})
 				}
+				wx.hideLoading()
 			},
 			fial: (res) => {
 				wx.showToast({
 					title: `请求服务失败`,
 					mask: true
 				})
+				wx.hideLoading()
 			}
 		})
 	},

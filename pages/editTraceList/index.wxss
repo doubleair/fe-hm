@@ -17,15 +17,6 @@
     padding: 10rpx 20rpx;
 }
 
-.edit-submit {
-    position: absolute;
-    bottom: 60rpx;
-    left: 20rpx;
-    right: 20rpx;
-    background-color: #3385FF;
-    color: #fff;
-}
-
 .my-item {
     position: relative;
     background-color: #FAFAFA;
@@ -180,4 +171,38 @@
     font-size: 36rpx;
     line-height: 80rpx;
     height: 80rpx;
+}
+
+.jianghu-undefined-bt {
+    width: 160rpx;
+    height: 60rpx;
+    line-height: 60rpx;
+    background-color: #3385FF;
+    color: #fff;
+    border-radius: 6rpx;
+    font-size: 24rpx;
+    text-align: center;
+    margin: auto;
+}
+
+.jianghu-undefined-small-t1 {
+    font-size: 24rpx;
+    color: #CACACA;
+    text-align: center;
+    padding-top: 20rpx;
+}
+
+.global-layer {
+    position: fixed;
+    bottom: 20rpx;
+    right: 20rpx;
+    font-size: 34rpx;
+    width: 100rpx;
+    height: 100rpx;
+    line-height: 100rpx;
+    text-align: center;
+    border-radius: 50%;
+    background-color: #3385FF;
+    color: #fff;
+    box-shadow: 0 0 60rpx 2rpx rgba(0, 0, 0, 0.2);
 }

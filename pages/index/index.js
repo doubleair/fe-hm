@@ -12,7 +12,8 @@ Page({
 		followed: false,
 		followedNum: 0,
 		liked: false,
-		likedNum: 0
+		likedNum: 0,
+		avatarUrl: ''
 	},
 	onShareAppMessage: function(res) {
 		if (res.from === 'button') {
@@ -37,9 +38,23 @@ Page({
         })
 	},
 	gotoAddTag: function() {
-		console.log('tsdadas', this);
 		wx.navigateTo({
             url: `../addTag/index?huamingId=${this.data.huamingId}`
+        })
+	},
+	gotoEditTraceList: function() {
+		wx.navigateTo({
+            url: `../editTraceList/index`
+        })
+	},
+	gotoEditGameList: function() {
+		wx.navigateTo({
+            url: `../editGameList/index`
+        })
+	},
+	gotoAddTag: function() {
+		wx.navigateTo({
+            url: `../addTag/index`
         })
 	},
 	requestLike: function() {
@@ -80,7 +95,6 @@ Page({
 		const labelList = this.data.labelList
 		const labelListTemp = this.data.labelList
 		const index = e.currentTarget.dataset.index
-		console.log('sdads', this.data.labelList, this.data.labelList.liked);
 		if(this.data.labelList[index].liked) {
 			labelList[index].liked = !labelList[index].liked
 			labelList[index].likedNum = labelList[index].likedNum - 1
@@ -103,7 +117,6 @@ Page({
 			isLogin: true,
 			success: (res) => {
 				if(res.success) {
-					console.log('res.data', res.data);
 					labelListTemp[index].liked = res.data.liked
 					labelListTemp[index].likedNum = res.data.likedNum
 					this.setData({
@@ -177,6 +190,10 @@ Page({
 		})
 	},
 	requestCardInfo: function() {
+		wx.showLoading({
+			title: '加载中...',
+			mask: true
+		})
 		request({
 			key: 'getHuamingAndJianghuAndTrace',
 			isLogin: true,
@@ -188,21 +205,20 @@ Page({
 						traceList
 					})
 				}
+				wx.hideLoading()
 			},
 			fial: (res) => {
 				wx.showToast({
 					title: `请求服务失败`,
 					mask: true
 				})
+				wx.hideLoading()
 			}
 		})
 	},
 	onshow: function(res) {
-		console.log('dddssssonshowonshow');
 		var appInstance = getApp()
-
 		this.setData({ courseItems: appInstance.gCourse })
-		console.log('dsdas', appInstance);
 	},
 	onLoad: function (res) {
 		this.setData({

@@ -4,15 +4,20 @@
         <view class='hm-detail-header-card'>
             <view class='hm-detail-header-v1'>
                 <text class='hm-detail-header-t1'>{{huaming || '暂无花名'}}</text>
-                <image class='hm-detail-header-pic fright' src="http://img3.imgtn.bdimg.com/it/u=2770691011,100164542&fm=27&gp=0.jpg" />
+                <image class='hm-detail-header-pic fright' src="{{avatarUrl}}" />
             </view>
             <view class='hm-detail-header-v2'>
-                <view class='hm-detail-header-t2 ellipsis1'>{{introduction || '匆匆过客，暂无信息'}}</view>
+                <view class='hm-detail-header-t2 ellipsis1'>{{introduction || '这位客官，暂无话可说。'}}</view>
             </view>
             <view class='hm-detail-header-v3'>
-                <view class='hm-detail-header-v3-1'>
+                <view class='hm-detail-header-v3-1' wx:if='{{traceList && traceList.length !== 0}}'>
                     <View class='hm-detail-header-t3-t1 pink iconfont icon-gongsi1 ellipsis1' wx:for='{{traceList}}' wx:key='{{item.id}}'> {{item.description}}</View>
                 </view>
+                <view class='hm-detail-header-v3-1' wx:else>
+                    <view class='trace-undefined-container'>
+                        <text class='trace-undefined-bt' bindtap="gotoEditTraceList" hover-class="defaultTap">暂无痕迹</text>
+                    </view>
+                </view>                
                 <view class='hm-detail-header-v3-2'>
                     <view class='hm-detail-header-v3-card'>
                         <view class='hm-detail-header-v3-fun-container'>
@@ -42,13 +47,19 @@
         </view>
 
         <view class='hm-detail-layout-1-body'>
-            <view class='hm-detail-layout-1-item' wx:for='{{jianghuList}}' wx:key='{{item.id}}'>
-                <image class='hm-detail-layout-1-pic' src="https://gss2.bdstatic.com/-fo3dSag_xI4khGkpoWK1HF6hhy/baike/w%3D268%3Bg%3D0/sign=fc01334b798b4710ce2ffacafbf5a4c0/1b4c510fd9f9d72a26f9db77df2a2834349bbb3f.jpg" />
+            <view wx:if='{{jianghuList && jianghuList.length !== 0}}'>
+                <view class='hm-detail-layout-1-item' wx:for='{{jianghuList}}' wx:key='{{item.id}}' wx:if='{{jianghuList && jianghuList.length !== 0}}'>
+                    <image class='hm-detail-layout-1-pic' src="https://gss2.bdstatic.com/-fo3dSag_xI4khGkpoWK1HF6hhy/baike/w%3D268%3Bg%3D0/sign=fc01334b798b4710ce2ffacafbf5a4c0/1b4c510fd9f9d72a26f9db77df2a2834349bbb3f.jpg" />
+                </view>
+            </view>
+            <view class='jianghu-undefined-container' wx:else>
+                <view class='jianghu-undefined-bt' bindtap="gotoEditGameList">立即添加</view>
+                <view class='jianghu-undefined-small-t1'>好汉！江湖之大，必经历风风雨雨，请留下您的江湖吧！</view>
             </view>
         </view>
     </view>
 
-    <view class='hm-detail-layout-1' wx:if='labelList && labelList.length === 0'>
+    <view class='hm-detail-layout-1'>
         <view class='hm-detail-layout-1-header'>
             <view class='hm-detail-layout-1-line'></view>
             <view class='hm-detail-layout-1-t1'>标签</view>
@@ -56,8 +67,12 @@
             <view class='hm-detail-layout-1-fun' bindtap='gotoAddTag' wx:if='{{huamingId}}'>添加标签<text class='iconfont icon-you'></text></view>
         </view>
 
-        <view class='hm-detail-layout-2-body'>
+        <view class='hm-detail-layout-2-body' wx:if='labelList && labelList.length === 0'>
             <text class="hm-detail-layout-2-body-item {{item.liked ? 'colorBlueBK' : ''}}" wx:for='{{labelList}}' data-index='{{index}}' data-tagid='{{item.id}}' bindtap='requestLabelLike' wx:key='{{item.id}}'># {{item.label || '--'}} #<text class='hm-detail-layout-2-body-item-count'>{{item.likedNum || 0}}</text></text>
+        </view>
+        <view class='jianghu-undefined-container' wx:else>
+            <view class='jianghu-undefined-bt' bindtap='gotoAddTag'>立即添加</view>
+            <view class='jianghu-undefined-small-t1'>好汉！快快成为第一位给「{{huaming || '暂无花名'}}」打标签的侠客吧！</view>
         </view>
     </view>
 

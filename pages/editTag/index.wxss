@@ -55,3 +55,15 @@
     background-color: #fff;
     padding: 20rpx;
 }
+
+.jianghu-undefined-container {
+    background-color: #fff;
+    padding-bottom: 90rpx;
+}
+
+.jianghu-undefined-small-t1 {
+    font-size: 24rpx;
+    color: #CACACA;
+    text-align: center;
+    padding-top: 20rpx;
+}

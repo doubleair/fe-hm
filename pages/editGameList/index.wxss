@@ -9,7 +9,7 @@
 
 .edit-input-container {
     background-color: #fff;
-    padding: 40rpx 0 240rpx 40rpx;
+    padding: 40rpx 0 40rpx 40rpx;
 }
 
 .edit-input-border {
@@ -191,4 +191,23 @@
     background-color: #3385FF;
     color: #fff;
     box-shadow: 0 0 60rpx 2rpx rgba(0, 0, 0, 0.2);
+}
+
+.jianghu-undefined-bt {
+    width: 160rpx;
+    height: 60rpx;
+    line-height: 60rpx;
+    background-color: #3385FF;
+    color: #fff;
+    border-radius: 6rpx;
+    font-size: 24rpx;
+    text-align: center;
+    margin: auto;
+}
+
+.jianghu-undefined-small-t1 {
+    font-size: 24rpx;
+    color: #CACACA;
+    text-align: center;
+    padding-top: 20rpx;
 }

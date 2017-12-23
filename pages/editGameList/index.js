@@ -51,6 +51,6 @@ Page({
 		this.setData({
 			urlParams: res
 		})
-		this.requestCardInfo()
+		// this.requestCardInfo()
 	}
 })
