@@ -67,7 +67,7 @@
             <view class='hm-detail-layout-1-fun' bindtap='gotoAddTag' wx:if='{{huamingId}}'>添加标签<text class='iconfont icon-you'></text></view>
         </view>
 
-        <view class='hm-detail-layout-2-body' wx:if='labelList && labelList.length === 0'>
+        <view class='hm-detail-layout-2-body' wx:if='{{labelList && labelList.length !== 0}}'>
             <text class="hm-detail-layout-2-body-item {{item.liked ? 'colorBlueBK' : ''}}" wx:for='{{labelList}}' data-index='{{index}}' data-tagid='{{item.id}}' bindtap='requestLabelLike' wx:key='{{item.id}}'># {{item.label || '--'}} #<text class='hm-detail-layout-2-body-item-count'>{{item.likedNum || 0}}</text></text>
         </view>
         <view class='jianghu-undefined-container' wx:else>
@@ -76,7 +76,8 @@
         </view>
     </view>
 
-
-    <button class='global-layer-share iconfont icon-fenxiang1' open-type="share"></button>
-    <view class='global-layer iconfont icon-bianji' bindtap="gotoCardInfo"></view>
+    <view wx:if='{{huamingId}}'>
+        <button class='global-layer-share iconfont icon-fenxiang1' open-type="share"></button>
+        <view class='global-layer iconfont icon-bianji' bindtap="gotoCardInfo"></view>
+    </view>
 </view>

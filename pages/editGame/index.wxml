@@ -19,13 +19,15 @@
                         </view>
                     </view>
                     <view class='edit-input-border overflow-hidden'>
-                        <view class='edit-del-line iconfont icon-shanchu'></view>
                         <input class='edit-input' type="text" placeholder="请输入名称" name='jianghuSite' value='{{jianghuSite}}' />
                     </view>
                 </view>
             </view>
 
-            <button class='edit-submit' formType="submit" size="defaultSize" hover-class="defaultTap">保存</button>
+            <view class='edit-bt-container'>
+                <button class='edit-bt edit-delete' size="defaultSize" bindtap="requestRemove" hover-class="defaultTap">删除</button>
+                <button class='edit-bt edit-submit' formType="submit" size="defaultSize" hover-class="defaultTap">保存</button>
+            </view>
         </form>
     </view>
 </view>

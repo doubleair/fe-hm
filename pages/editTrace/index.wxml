@@ -25,7 +25,7 @@
         </view>
 
         <view class='edit-bt-container'>
-            <button class='edit-bt edit-delete' size="defaultSize" bindtap="bindEditDelete" hover-class="defaultTap">删除</button>
+            <button class='edit-bt edit-delete' size="defaultSize" bindtap="requestRemove" hover-class="defaultTap">删除</button>
             <button class='edit-bt edit-submit' formType="submit" size="defaultSize" hover-class="defaultTap">保存</button>
         </view>
     </form>

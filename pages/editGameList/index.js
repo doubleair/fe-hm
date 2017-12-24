@@ -42,15 +42,16 @@ Page({
 			}
 		})
 	},
-	onshow: function() {
+	onShow: function(res) {
 		this.setData({
-			urlParams: res
+			searchMap: res
 		})
+		this.requestCardInfo()
 	},
 	onLoad: function (res) {
-		this.setData({
-			urlParams: res
-		})
+		// this.setData({
+		// 	searchMap: res
+		// })
 		// this.requestCardInfo()
 	}
 })

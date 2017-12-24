@@ -188,3 +188,15 @@
 .follow::before {
     border: 0;
 }
+
+.collection-undefined-container {
+    padding-top: 200rpx;
+}
+
+.collection-undefined-small-t1 {
+    display: block;
+    font-size: 32rpx;
+    color: #CACACA;
+    text-align: center;
+    padding-top: 20rpx;
+}

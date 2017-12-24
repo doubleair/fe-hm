@@ -17,6 +17,11 @@ Page({
             url: `../editTrace/index?traceId=${traceId}`
         })
 	},
+	gotoNewEditTrace: function(e) {
+		wx.navigateTo({
+            url: `../editTrace/index`
+        })
+	},
 	requestCardInfo: function() {
 		wx.showLoading({
 			title: '加载中...',
@@ -43,15 +48,18 @@ Page({
 			}
 		})
 	},
-	onshow: function() {
+	onShow: function(res) {
 		this.setData({
-			urlParams: res
-		})
-	},
-	onLoad: function (res) {
-		this.setData({
-			urlParams: res
+			searchMap: res
 		})
 		this.requestCardInfo()
+		console.log('ddsdssss=====');
+	},
+	onLoad: function (res) {
+		// this.setData({
+		// 	searchMap: res
+		// })
+		// console.log('ddddsssssssssssss+++++++++');
+		// this.requestCardInfo()
 	}
 })

@@ -106,7 +106,7 @@ Page({
 			}
 		})
 	},
-	onLoad: function (res) {
+	onShow: function(res) {
 		this.setData({
 			searchMap: res
 		})

@@ -68,7 +68,7 @@ Page({
 			success: (res) => {
 				if(res.success) {
 					wx.showToast({
-						title: '保存成功！',
+						title: '操作成功！',
 						mask: true
 					})
 				}

@@ -22,7 +22,7 @@ Page({
 		}
 		return {
 			title: this.data.huaming + '花名片',
-			path: `/pages/index`,
+			path: `/pages/info/index?huamingId=${this.data.huamingId}`,
 			success: (res) => {
 				this.requestShare()
 			},
@@ -216,11 +216,11 @@ Page({
 			}
 		})
 	},
-	onshow: function(res) {
-		var appInstance = getApp()
-		this.setData({ courseItems: appInstance.gCourse })
-	},
-	onLoad: function (res) {
+	// onshow: function(res) {
+	// 	var appInstance = getApp()
+	// 	this.setData({ courseItems: appInstance.gCourse })
+	// },
+	onShow: function (res) {
 		this.setData({
 			searchMap: res
 		})

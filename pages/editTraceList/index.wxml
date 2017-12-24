@@ -17,12 +17,12 @@
                 </view>
             </view>
             <view wx:else>
-                <view class='jianghu-undefined-bt' bindtap="gotoEditTrace">立即添加</view>
+                <view class='jianghu-undefined-bt' bindtap="gotoNewEditTrace">立即添加</view>
                 <view class='jianghu-undefined-small-t1'>暂无江湖内容，大家对您还不太了解！</view>
             </view>
         </view>
     </view>
 
-    <view class='global-layer edit-submit iconfont icon-bianji' bindtap="gotoEditTrace" wx:if='{{traceList.length < 1}}'></view>
+    <view class='global-layer edit-submit iconfont icon-bianji' bindtap="gotoNewEditTrace" wx:if='{{traceList.length <= 1}}'></view>
 
 </view>

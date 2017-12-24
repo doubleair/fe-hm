@@ -25,28 +25,25 @@ Page({
 			cagegoryIndex: e.detail.value
 		})
 	},
-	bindEditDelete: function () {
-
-	},
-	bindEditSubmit: function (e) {
-
-		request({
-			key: 'infoUpdate',
-			data: {
-				type: 'mark',
-				value: JSON.stringify({
-					traceId: '100928',
-					description: '攻守道'
-				})
-			},
-			isLogin: true,
-			success: (res) => {
-				console.log('ddss', res);
-			},
-			fial: () => {
-			}
-		})
-	},
+	// bindEditSubmit: function (e) {
+	// 	const traceId = this.data.searchMap.traceId
+	// 	request({
+	// 		key: 'infoUpdate',
+	// 		data: {
+	// 			type: 'mark',
+	// 			value: JSON.stringify({
+	// 				traceId: traceId,
+	// 				description: '攻守道'
+	// 			})
+	// 		},
+	// 		isLogin: true,
+	// 		success: (res) => {
+	// 			console.log('ddss', res);
+	// 		},
+	// 		fial: () => {
+	// 		}
+	// 	})
+	// },
 	requestCagegory: function(e) {
 		wx.showLoading({
 			title: '加载中...',
@@ -86,7 +83,6 @@ Page({
 					let traceList = res.data.traceList
 					let currentTraceInfo = {}
 					// 查询目标痕迹信息
-					console.log('traceList', traceList);
 					traceList.forEach((data) => {
 						if(Number(this.data.searchMap.traceId) === data.id) {
 							currentTraceInfo = data
@@ -96,10 +92,8 @@ Page({
 					// 查询行业下标
 					this.data.sourceCagegoryList.forEach((data, index) => {
 						if(data.id === currentTraceInfo.traceConstantId) {
-							console.log('dasdsa', index);
 							const cagegoryIndex = index
 							const description = currentTraceInfo.description
-							console.log('description', description);
 							this.setData({
 								cagegoryIndex,
 								description
@@ -116,10 +110,59 @@ Page({
 			}
 		})
 	},
+	requestRemove: function() {
+		wx.showActionSheet({
+			itemList: ['确认删除'],
+			itemColor: '#FF0000',
+			success: (res) => {
+				if(res.tapIndex === 0) {
+					const traceId = this.data.searchMap.traceId
+					// 数据删除
+					if(traceId) {
+						request({
+							key: 'removeTrace',
+							isLogin: true,
+							data: {
+								traceId: this.data.searchMap.traceId
+							},
+							success: (res) => {
+								if(res.success) {
+									wx.showToast({
+										title: '操作成功！',
+										mask: true,
+										success: () => {
+											console.log('fdff', getCurrentPages(), getCurrentPages().length);
+											setTimeout(() => {
+												wx.navigateBack({
+													delta: 1
+												})
+											}, 1000)
+										}
+									})
+								}
+							}
+						})
+					}
+					// 回退
+					else {
+						wx.navigateBack({
+							delta: 1
+						})
+					}
+				}
+			},
+			fail: function(res) {
+			  	console.log(res.errMsg)
+			}
+		})
+	},
 	requestSave: function(e) {
+		wx.showLoading({
+			title: '加载中...',
+			mask: true
+		})
 		const params = {
 			traceConstantId: this.data.sourceCagegoryList[this.data.cagegoryIndex].id,
-			// traceName: this.data.sourceCagegoryList[this.data.cagegoryIndex].traceName,
 			description: e.detail.value.description
 		}
 		if(this.data.searchMap.traceId) {
@@ -135,10 +178,21 @@ Page({
 			success: (res) => {
 				if(res.success) {
 					wx.showToast({
-						title: '保存成功！',
-						mask: true
+						title: '操作成功！',
+						mask: true,
+						success: () => {
+							setTimeout(() => {
+								wx.navigateBack({
+									delta: 1
+								})
+							}, 1000)
+						}
 					})
 				}
+				wx.hideLoading()
+			},
+			fail: () => {
+				wx.hideLoading()
 			}
 		})
 	},

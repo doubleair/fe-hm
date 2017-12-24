@@ -38,22 +38,33 @@ Page({
 		})
 	},
 	requestRemoveLabel: function(e) {
-		request({
-			key: 'removeLabel',
-			data: {
-				labelId: e.currentTarget.dataset.tagid
-			},
-			isLogin: true,
+		wx.showActionSheet({
+			itemList: ['确认删除'],
+			itemColor: '#FF0000',
 			success: (res) => {
-				if(res.success) {
-					this.requestCardInfo()
+				if(res.tapIndex === 0) {
+					request({
+						key: 'removeLabel',
+						data: {
+							labelId: e.currentTarget.dataset.tagid
+						},
+						isLogin: true,
+						success: (res) => {
+							if(res.success) {
+								this.requestCardInfo()
+							}
+						},
+						fial: (res) => {
+							wx.showToast({
+								title: `请求服务失败`,
+								mask: true
+							})
+						}
+					})
 				}
 			},
-			fial: (res) => {
-				wx.showToast({
-					title: `请求服务失败`,
-					mask: true
-				})
+			fail: function(res) {
+			  	console.log(res.errMsg)
 			}
 		})
 	},
@@ -61,6 +72,6 @@ Page({
 		this.setData({
 			searchMap: res
 		})
-		// this.requestCardInfo()
+		this.requestCardInfo()
 	}
 })

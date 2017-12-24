@@ -38,6 +38,10 @@ Page({
         })
 	},
 	requestGetFollowList: function(options = {}) {
+		wx.showLoading({
+			title: '加载中...',
+			mask: true
+		})
 		const { page, pageSize, wxScrollType } = options
 		if(!this.data.isFinish || wxScrollType === 'top') {
 			isRequest = true
@@ -124,15 +128,12 @@ Page({
 	},
 	onLoad: function (res) {
 		this.setData({
-			urlParams: res
+			searchMap: res
 		})
 		this.requestGetFollowList({
 			page: 1, 
 			pageSize: 10,
 		})
-		wx.showLoading({
-			title: '加载中...',
-			mask: true
-		})
+		
 	}
 })

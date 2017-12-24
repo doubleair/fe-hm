@@ -128,11 +128,51 @@ Page({
 			}
 		})
 	},
+	requestRemove: function() {
+		wx.showActionSheet({
+			itemList: ['确认删除'],
+			itemColor: '#FF0000',
+			success: (res) => {
+				if(res.tapIndex === 0) {
+					const jianghuId = this.data.searchMap.gameId
+					console.log('getCurrentPages()', getCurrentPages(), getCurrentPages().length -1);
+					if(jianghuId) {
+						request({
+							key: 'removeJianghu',
+							isLogin: true,
+							data: {
+								jianghuId: this.data.searchMap.gameId
+							},
+							success: (res) => {
+								if(res.success) {
+									wx.showToast({
+										title: '操作成功！',
+										mask: true,
+										success: () => {
+											wx.navigateBack({
+												delta: 1
+											})
+										}
+									})
+								}
+							}
+						})
+					} else {
+						wx.navigateBack({
+							delta: 1
+						})
+					}
+				}
+			},
+			fail: function(res) {
+			  	console.log(res.errMsg)
+			}
+		})
+	},
 	requestSave: function (e) {
 		const nextLevelList = this.data.sourceMultiArray[this.data.multiIndex[0]].nextLevelList[this.data.multiIndex[1]]
 		const params = {
 			jianghuConstantId: nextLevelList.id,
-			// jianghuName: nextLevelList.jianghuName,
 			jianghuSite: e.detail.value.jianghuSite
 		}
 
@@ -149,8 +189,15 @@ Page({
 			success: (res) => {
 				if (res.success) {
 					wx.showToast({
-						title: '保存成功！',
-						mask: true
+						title: '操作成功！',
+						mask: true,
+						success: () => {
+							setTimeout(() => {
+								wx.navigateBack({
+									delta: 1
+								})
+							}, 1000)
+						}
 					})
 				}
 			}

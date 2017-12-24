@@ -93,7 +93,7 @@ Page({
 	},
 	onLoad: function (res) {
 		this.setData({
-			urlParams: res
+			searchMap: res
 		})
 		this.requestRule()
 	}

@@ -41,8 +41,9 @@
 		-->
 	</view>
 
-	<view wx:else>
-		
+	<view class='collection-undefined-container' wx:else>
+		<text class='collection-undefined-small-t1'>您还未收藏他人花名！</text>
+		<text class='collection-undefined-small-t1'>以防忘记重要人士，请勤于收藏吧！</text>
 	</view>
 
 </view> 

@@ -23,31 +23,13 @@ Page({
 			success: (res) => {
 				if(res.success) {
 					wx.showToast({
-						title: '保存成功！',
+						title: '操作成功！',
 						mask: true
 					})
 				}
 			}
 		})
 	},
-	// requestRule: function(options = {}) {
-	// 	wx.showLoading({
-	// 		title: '加载中...',
-	// 		mask: true
-	// 	})
-	// 	request({
-	// 		key: 'getHuamingInfo',
-	// 		isLogin: true,
-	// 		success: (res) => {
-	// 			if(res.success) {
-	// 				this.setData({
-	// 					huaming: res.data.huaming
-	// 				})
-	// 			}
-	// 		}
-	// 	})
-	// 	wx.hideLoading()
-	// },
 	requestCardInfo: function() {
 		request({
 			key: 'getHuamingAndJianghuAndTrace',

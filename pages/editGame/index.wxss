@@ -17,13 +17,17 @@
     padding: 10rpx 20rpx;
 }
 
-.edit-submit {
+/* .edit-submit {
     position: absolute;
     bottom: 60rpx;
     left: 20rpx;
     right: 20rpx;
     background-color: #3385FF;
     color: #fff;
+} */
+
+.edit-submit {
+    background-color: #3385FF;
 }
 
 .my-item {
@@ -175,4 +179,24 @@
     font-size: 36rpx;
     line-height: 80rpx;
     height: 80rpx;
+}
+
+.edit-bt-container {
+    position: absolute;
+    bottom: 60rpx;
+    left: 0;
+    right: 0;
+    width: 100%;
+    padding: 0 20rpx;
+}
+
+.edit-bt {
+    display: inline-block;
+    color: #fff;
+    width: 49%;
+}
+
+.edit-delete {
+    background-color: rgb(245, 43, 60);
+    margin-right: 2%;
 }
