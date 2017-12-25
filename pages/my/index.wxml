@@ -14,10 +14,19 @@
         <view>
             <view class='my-func'>
                 <view class='my-func-group'>
-                    <view class='my-func-item'>
-                        客服（吐槽、建议、提问）
-                        <view class='color999 iconfont icon-you fright'></view>
-                    </view>
+                        <view class='my-func-item'>
+                            客服
+                            <contact-button type="default-light" size="12" session-from="weapp" style="position: absolute; left: 60rpx; top: 40rpx"></contact-button>
+                            <contact-button type="default-light" size="12" session-from="weapp" style="position: absolute; left: 120rpx; bottom: 40rpx"></contact-button>
+                            <contact-button type="default-light" size="12" session-from="weapp" style="position: absolute; left: 180rpx; top: 40rpx"></contact-button>
+                            <contact-button type="default-light" size="12" session-from="weapp" style="position: absolute; left: 240rpx; bottom: 40rpx"></contact-button>
+                            <contact-button type="default-light" size="12" session-from="weapp" style="position: absolute; left: 320rpx; top: 40rpx"></contact-button>
+                            <contact-button type="default-light" size="12" session-from="weapp" style="position: absolute; left: 380rpx; bottom: 40rpx"></contact-button>
+                            <contact-button type="default-light" size="12" session-from="weapp" style="position: absolute; left: 420rpx; top: 40rpx"></contact-button>
+                            <contact-button type="default-light" size="12" session-from="weapp" style="position: absolute; left: 480rpx; bottom: 40rpx"></contact-button>
+                            <contact-button type="default-light" size="12" session-from="weapp" style="position: absolute; left: 520rpx; top: 40rpx"></contact-button>
+                            <view class='color999 iconfont icon-you fright'></view>
+                        </view>
                 </view>
             </view>
         </view>

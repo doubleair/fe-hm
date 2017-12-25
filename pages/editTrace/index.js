@@ -131,7 +131,6 @@ Page({
 										title: '操作成功！',
 										mask: true,
 										success: () => {
-											console.log('fdff', getCurrentPages(), getCurrentPages().length);
 											setTimeout(() => {
 												wx.navigateBack({
 													delta: 1

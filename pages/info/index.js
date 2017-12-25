@@ -48,6 +48,30 @@ Page({
 			urls: [src] // 需要预览的图片http链接列表
 		})
 	},
+	handleCP: function(e) {
+		const url = e.currentTarget.dataset.url
+		wx.setClipboardData({
+			data: url,
+			success: function(res) {
+				wx.getClipboardData({
+					success: function(res) {
+						console.log(res.data) // data
+					}
+				})
+				wx.showModal({
+					title: '提示：已复制应用地址',
+					content: '由于小程序限制，无法直接打开页面，请使用电脑/手机浏览器访问！',
+					success: function(res) {
+						if (res.confirm) {
+							console.log('用户点击确定')
+						} else if (res.cancel) {
+							console.log('用户点击取消')
+						}
+					}
+				})
+			}
+		})
+    },
 	requestLike: function() {
 		if(this.data.liked) {
 			this.setData({

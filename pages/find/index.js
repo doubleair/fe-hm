@@ -32,8 +32,6 @@ Page({
 	},
 	gotoInfo: function(e) {
 		const huamingId = e.currentTarget.dataset.huamingid
-		console.log('huamingId', e, huamingId);
-		console.log('object', huamingId, this.data.huamingId);
 		if(huamingId === this.data.huamingId) {
 			wx.switchTab({
 				url: `../index/index`

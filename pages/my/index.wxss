@@ -105,6 +105,7 @@
 }
 
 .my-func-item {
+    position: relative;
     color: #999999;
     font-size: 30rpx;
     padding-right: 20rpx;

@@ -110,12 +110,12 @@ Page({
 		this.setData({
 			searchMap: res
 		})
-		getEnhanceUserInfo((code, userInfo) => {
-			this.setData({
-				...userInfo,
-				huaming: userInfo.nickName
-			})
-		})
+		// getEnhanceUserInfo((code, userInfo) => {
+		// 	this.setData({
+		// 		...userInfo,
+		// 		huaming: userInfo.nickName
+		// 	})
+		// })
 		this.requestRule()
 	}
 })

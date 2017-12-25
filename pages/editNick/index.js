@@ -24,7 +24,14 @@ Page({
 				if(res.success) {
 					wx.showToast({
 						title: '操作成功！',
-						mask: true
+						mask: true,
+						success: () => {
+							setTimeout(() => {
+								wx.navigateBack({
+									delta: 1
+								})
+							}, 1000)
+						}
 					})
 				}
 			}
