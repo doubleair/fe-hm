@@ -10,14 +10,14 @@
 		<view class='bucard-item' wx:for='{{followList}}' wx:key='{{item, index}}'>
 			<view class='bucard-item-v1' bindtap="gotoInfo" data-huamingid='{{item.id}}'>
 				<view class='bucard-item-v1-2'>
-                	<image class='bucard-item-pic' src="http://img3.imgtn.bdimg.com/it/u=2770691011,100164542&fm=27&gp=0.jpg" />
+                	<image class='bucard-item-pic' src="{{item.avatarUrl}}" data-src='{{item.avatarUrl}}' catchtap='handleBigPic' />
 				</view>
 				<view class='bucard-item-v1-1'>
 					<view class='bucard-t1 m-bottom-10'>{{item.huaming}}</view>
 					<view class='bucard-t2 ellipsis1'>{{item.introduction}}</view>
 				</view>
 				<view class='follow-container'>
-					<button class="follow {{item.hasNotFollow ? 'active' : ''}}" bindtap="requestFollow" data-index='{{index}}' data-huamingid='{{item.id}}' hover-class="defaultTap">
+					<button class="follow {{item.hasNotFollow ? 'active' : ''}}" catchtap="requestFollow" data-index='{{index}}' data-huamingid='{{item.id}}' hover-class="defaultTap">
 						{{item.hasNotFollow ? '关注' : '已关注'}}
 					</button>
 				</view>

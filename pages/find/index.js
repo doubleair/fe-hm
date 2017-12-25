@@ -33,9 +33,23 @@ Page({
 	gotoInfo: function(e) {
 		const huamingId = e.currentTarget.dataset.huamingid
 		console.log('huamingId', e, huamingId);
-		wx.navigateTo({
-            url: `../info/index?huamingId=${huamingId}`
-        })
+		console.log('object', huamingId, this.data.huamingId);
+		if(huamingId === this.data.huamingId) {
+			wx.switchTab({
+				url: `../index/index`
+			})
+		} else {
+			wx.navigateTo({
+				url: `../info/index?huamingId=${huamingId}`
+			})
+		}
+	},
+	handleBigPic: function(e) {
+		const src = e.currentTarget.dataset.src
+		wx.previewImage({
+			current: 1, // 当前显示图片的http链接
+			urls: [src] // 需要预览的图片http链接列表
+		})
 	},
 	requestGetFollowList: function(options = {}) {
 		wx.showLoading({
@@ -74,6 +88,7 @@ Page({
 								page: page,
 								pageSize: pageSize,
 								followList: followList,
+								huamingId: res.data.huamingId,
 								isFinish: _followList.length === 0
 							})
 							lockRequest = false

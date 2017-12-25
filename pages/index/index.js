@@ -4,16 +4,20 @@ var app = getApp()
 var { api } = require('../../config/api.default')
 const { getEnhanceUserInfo } = require('../../lib/authorize')
 const { request } = require('../../lib/request')
+const traceIcon = require('../../data/trace')
 
 let isRequest = false
 let lockRequest = false
+
+console.log('traceIcon, traceIcon', traceIcon);
 Page({
 	data: {
 		followed: false,
 		followedNum: 0,
 		liked: false,
 		likedNum: 0,
-		avatarUrl: ''
+		avatarUrl: '',
+		traceIcon: traceIcon
 	},
 	onShareAppMessage: function(res) {
 		if (res.from === 'button') {
@@ -21,7 +25,7 @@ Page({
 			console.log(res.target)
 		}
 		return {
-			title: this.data.huaming + '花名片',
+			title: this.data.huaming + '花名签',
 			path: `/pages/info/index?huamingId=${this.data.huamingId}`,
 			success: (res) => {
 				this.requestShare()
@@ -89,6 +93,13 @@ Page({
 					mask: true
 				})
 			}
+		})
+	},
+	handleBigPic: function(e) {
+		const src = e.currentTarget.dataset.src
+		wx.previewImage({
+			current: 1, // 当前显示图片的http链接
+			urls: [src] // 需要预览的图片http链接列表
 		})
 	},
 	requestLabelLike: function(e) {

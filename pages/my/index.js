@@ -12,40 +12,47 @@ Page({
 		userInfo: {},
 		officialInfo: {},
 	},
-	gotoMyOfficialDetail: function() {
-		wx.navigateTo({
-            url: `../myOfficialDetail/index?officialId=${this.data.userInfo.officialId}`
-        })
-	},
-	gotoMyOfficialApply: function() {
-		wx.navigateTo({
-            url: `../myOfficialApply/index`
-        })
-	},
-    gotoSend: function(e) {
-        wx.navigateTo({
-            url: `../send/index`
-        })
-	},
-	gotoMyOfficialInfoList: function(e) {
-		const { officialId } = this.data.userInfo
-		wx.navigateTo({
-            url: `../myOfficialInfoList/index?officialId=${officialId}`
-        })
-	},
-	gotoMyDynamic: function(e) {
-		wx.navigateTo({
-            url: `../myDynamic/index`
-        })
-	},
-	onPullDownRefresh: function() {
-		if(isRequest) return
-		if(!lockRequest) {
-			lockRequest = true
-			this.requestRule({
-				wxScrollType: 'top'
-			})
-		}
+	// gotoMyOfficialDetail: function() {
+	// 	wx.navigateTo({
+    //         url: `../myOfficialDetail/index?officialId=${this.data.userInfo.officialId}`
+    //     })
+	// },
+	// gotoMyOfficialApply: function() {
+	// 	wx.navigateTo({
+    //         url: `../myOfficialApply/index`
+    //     })
+	// },
+    // gotoSend: function(e) {
+    //     wx.navigateTo({
+    //         url: `../send/index`
+    //     })
+	// },
+	// gotoMyOfficialInfoList: function(e) {
+	// 	const { officialId } = this.data.userInfo
+	// 	wx.navigateTo({
+    //         url: `../myOfficialInfoList/index?officialId=${officialId}`
+    //     })
+	// },
+	// gotoMyDynamic: function(e) {
+	// 	wx.navigateTo({
+    //         url: `../myDynamic/index`
+    //     })
+	// },
+	// onPullDownRefresh: function() {
+	// 	if(isRequest) return
+	// 	if(!lockRequest) {
+	// 		lockRequest = true
+	// 		this.requestRule({
+	// 			wxScrollType: 'top'
+	// 		})
+	// 	}
+	// },
+	handleBigPic: function(e) {
+		const src = e.currentTarget.dataset.src
+		wx.previewImage({
+			current: 1, // 当前显示图片的http链接
+			urls: [src] // 需要预览的图片http链接列表
+		})
 	},
 	requestRule: function(options = {}) {
 		const { wxScrollType } = options
@@ -53,37 +60,13 @@ Page({
 			title: '加载中...',
 			mask: true
 		})
-		console.log('wxScrollType1111', wxScrollType);
 		getEnhanceUserInfo((wxSessionCode, userInfo) => {
 			this.setData({
 				userInfo
 			})
-			request({
-				key: 'login',
-				data: {
+			this.setData({
+				userInfo: {
 					...userInfo,
-				},
-				isLogin: true,
-				success: (res) => {
-					console.log('ddss', res);
-					if(res.code === 200) {
-						this.setData({
-							userInfo: {
-								...userInfo,
-								...res.data.userInfo
-							}
-						})
-						if(wxScrollType === 'top') {
-							wx.stopPullDownRefresh()
-							wx.showToast({
-								title: '刷新成功',
-								icon: 'success',
-								duration: 1200
-							})
-						}
-					}
-				},
-				fial: () => {
 				}
 			})
 			wx.hideLoading()

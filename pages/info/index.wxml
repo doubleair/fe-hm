@@ -4,7 +4,7 @@
         <view class='hm-detail-header-card'>
             <view class='hm-detail-header-v1'>
                 <text class='hm-detail-header-t1'>{{huaming || '暂无花名'}}</text>
-                <image class='hm-detail-header-pic fright' src="{{avatarUrl}}" />
+                <image class='hm-detail-header-pic fright' src="{{avatarUrl}}" data-src='{{avatarUrl}}' catchtap='handleBigPic' />
             </view>
             <view class='hm-detail-header-v2'>
                 <view class='hm-detail-header-t2 ellipsis1'>{{introduction || '这位客官，暂无话可说。'}}</view>

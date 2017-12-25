@@ -12,8 +12,7 @@ Page({
 		followed: false,
 		followedNum: 0,
 		liked: false,
-		likedNum: 0,
-		avatarUrl: ''
+		likedNum: 0
 	},
 	onShareAppMessage: function(res) {
 		if (res.from === 'button') {
@@ -21,8 +20,8 @@ Page({
 			console.log(res.target)
 		}
 		return {
-			title: this.data.huaming + '花名片',
-			path: `/pages/info/index?huamingId=${this.data.huamingId}`,
+			title: this.data.huaming + '花名签',
+			path: `/pages/info/index`,
 			success: (res) => {
 				this.requestShare()
 			},
@@ -42,20 +41,12 @@ Page({
             url: `../addTag/index?huamingId=${this.data.huamingId}`
         })
 	},
-	gotoEditTraceList: function() {
-		wx.navigateTo({
-            url: `../editTraceList/index`
-        })
-	},
-	gotoEditGameList: function() {
-		wx.navigateTo({
-            url: `../editGameList/index`
-        })
-	},
-	gotoAddTag: function() {
-		wx.navigateTo({
-            url: `../addTag/index`
-        })
+	handleBigPic: function(e) {
+		const src = e.currentTarget.dataset.src
+		wx.previewImage({
+			current: 1, // 当前显示图片的http链接
+			urls: [src] // 需要预览的图片http链接列表
+		})
 	},
 	requestLike: function() {
 		if(this.data.liked) {
@@ -95,6 +86,7 @@ Page({
 		const labelList = this.data.labelList
 		const labelListTemp = this.data.labelList
 		const index = e.currentTarget.dataset.index
+
 		if(this.data.labelList[index].liked) {
 			labelList[index].liked = !labelList[index].liked
 			labelList[index].likedNum = labelList[index].likedNum - 1
@@ -190,13 +182,16 @@ Page({
 		})
 	},
 	requestCardInfo: function() {
-		wx.showLoading({
-			title: '加载中...',
-			mask: true
-		})
+		const params = {}
+		const searchMap = this.data.searchMap || {}
+		console.log('dddss', this.data);
+		if(searchMap.huamingId) {
+			params.huamingId = searchMap.huamingId
+		}
 		request({
 			key: 'getHuamingAndJianghuAndTrace',
 			isLogin: true,
+			data: params,
 			success: (res) => {
 				if(res.success) {
 					let traceList = res.data.traceList && res.data.traceList.length > 2 ? res.data.traceList.slice(0, 2) : res.data.traceList
@@ -205,25 +200,21 @@ Page({
 						traceList
 					})
 				}
-				wx.hideLoading()
 			},
 			fial: (res) => {
 				wx.showToast({
 					title: `请求服务失败`,
 					mask: true
 				})
-				wx.hideLoading()
 			}
 		})
 	},
-	// onshow: function(res) {
-	// 	var appInstance = getApp()
-	// 	this.setData({ courseItems: appInstance.gCourse })
-	// },
 	onShow: function (res) {
+		this.requestCardInfo()
+	},
+	onLoad: function(res) {
 		this.setData({
 			searchMap: res
 		})
-		this.requestCardInfo()
 	}
 })

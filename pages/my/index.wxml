@@ -6,7 +6,7 @@
             <view class='my-item-header'>
                 <text class='my-nickname fleft'>{{userInfo.nickName}}</text>
                 <view class='my-userhead'>
-                    <image class='my-userhead-pic' src='{{userInfo.avatarUrl}}' />
+                    <image class='my-userhead-pic' src='{{userInfo.avatarUrl}}' data-src='{{userInfo.avatarUrl}}' catchtap='handleBigPic' />
                 </view>
             </view>
         </view>

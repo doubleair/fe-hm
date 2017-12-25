@@ -4,14 +4,14 @@
         <view class='hm-detail-header-card'>
             <view class='hm-detail-header-v1'>
                 <text class='hm-detail-header-t1'>{{huaming || '暂无花名'}}</text>
-                <image class='hm-detail-header-pic fright' src="{{avatarUrl}}" />
+                <image class='hm-detail-header-pic fright' src="{{avatarUrl}}" data-src='{{avatarUrl}}' bindtap="handleBigPic" />
             </view>
             <view class='hm-detail-header-v2'>
                 <view class='hm-detail-header-t2 ellipsis1'>{{introduction || '这位客官，暂无话可说。'}}</view>
             </view>
             <view class='hm-detail-header-v3'>
                 <view class='hm-detail-header-v3-1' wx:if='{{traceList && traceList.length !== 0}}'>
-                    <View class='hm-detail-header-t3-t1 pink iconfont icon-gongsi1 ellipsis1' wx:for='{{traceList}}' wx:key='{{item.id}}'> {{item.description}}</View>
+                    <View class='hm-detail-header-t3-t1 pink iconfont {{traceIcon[item.traceConstantId]}} ellipsis1' wx:for='{{traceList}}' wx:key='{{item.id}}'> {{item.description}}</View>
                 </view>
                 <view class='hm-detail-header-v3-1' wx:else>
                     <view class='trace-undefined-container'>

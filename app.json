@@ -17,7 +17,7 @@
   "window": {
     "navigationBarBackgroundColor": "#3385ff",
     "navigationBarTextStyle": "white",
-    "navigationBarTitleText": "花名",
+    "navigationBarTitleText": "花名签",
     "backgroundColor": "#E2E2E2",
     "backgroundTextStyle": "dark",
     "enablePullDownRefresh": true,
